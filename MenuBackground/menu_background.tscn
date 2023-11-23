@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdj7q1uwpqjyw"]
+
+[ext_resource type="Script" path="res://MenuBackground/menu_background.gd" id="1_q7v4a"]
+[ext_resource type="Texture2D" uid="uid://dy5oxdq0v5kxn" path="res://Sprites/MenuBackground/mountains.png" id="1_r7nhq"]
+[ext_resource type="Texture2D" uid="uid://jygvfpaqgyjr" path="res://Sprites/MenuBackground/grass.png" id="2_555dp"]
+[ext_resource type="Texture2D" uid="uid://ctqucarcpqpmk" path="res://Sprites/MenuBackground/clouds.png" id="3_sex5x"]
+
+[node name="MenuBackground" type="ParallaxBackground"]
+script = ExtResource("1_q7v4a")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(960, 540)
+texture = ExtResource("3_sex5x")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Mountains" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(960, 540)
+texture = ExtResource("1_r7nhq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Grass" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(960, 540)
+texture = ExtResource("2_555dp")

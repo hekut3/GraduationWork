@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b86y13yib52dr"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 466.0
+offset_top = 273.0
+offset_right = 703.0
+offset_bottom = 345.0
+theme_override_font_sizes/font_size = 50
+text = "Ураааааа"
