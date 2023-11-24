@@ -1,29 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnd8i30ut66jx"]
+[gd_scene load_steps=7 format=3 uid="uid://cnd8i30ut66jx"]
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_1rduk"]
 [ext_resource type="PackedScene" uid="uid://bdj7q1uwpqjyw" path="res://MenuBackground/menu_background.tscn" id="2_3kbaj"]
+[ext_resource type="Texture2D" uid="uid://csj4pt7av2xyf" path="res://Sprites/Buttons/button_play_normal.png" id="3_hrke3"]
+[ext_resource type="Texture2D" uid="uid://bvlp8ieiy3u4b" path="res://Sprites/Buttons/button_play_hover.png" id="4_oc2je"]
+[ext_resource type="Texture2D" uid="uid://hju36ugk7ln" path="res://Sprites/Buttons/button_exit_normal.png" id="5_tl2qg"]
+[ext_resource type="Texture2D" uid="uid://d5h576dm6kmn" path="res://Sprites/Buttons/button_exit_hover.png" id="6_ax5rm"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_1rduk")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 826.0
-offset_top = 236.0
-offset_right = 1101.0
-offset_bottom = 349.0
-theme_override_font_sizes/font_size = 50
-text = "Играть"
-
-[node name="Quit" type="Button" parent="."]
-offset_left = 826.0
-offset_top = 443.0
-offset_right = 1101.0
-offset_bottom = 546.0
-theme_override_font_sizes/font_size = 50
-text = "Выйти
-"
-
 [node name="Menu_Background" parent="." instance=ExtResource("2_3kbaj")]
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 820.0
+offset_top = 350.0
+offset_right = 1120.0
+offset_bottom = 450.0
+texture_normal = ExtResource("3_hrke3")
+texture_hover = ExtResource("4_oc2je")
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 800.0
+offset_top = 550.0
+offset_right = 1100.0
+offset_bottom = 650.0
+texture_normal = ExtResource("5_tl2qg")
+texture_hover = ExtResource("6_ax5rm")
+
+[connection signal="pressed" from="Play" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
