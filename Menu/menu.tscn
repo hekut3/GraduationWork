@@ -20,6 +20,14 @@ offset_bottom = 450.0
 texture_normal = ExtResource("3_hrke3")
 texture_hover = ExtResource("4_oc2je")
 
+[node name="New_game" type="TextureButton" parent="."]
+offset_left = 820.0
+offset_top = 124.0
+offset_right = 1120.0
+offset_bottom = 224.0
+texture_normal = ExtResource("3_hrke3")
+texture_hover = ExtResource("4_oc2je")
+
 [node name="Quit" type="TextureButton" parent="."]
 offset_left = 800.0
 offset_top = 550.0
@@ -29,4 +37,5 @@ texture_normal = ExtResource("5_tl2qg")
 texture_hover = ExtResource("6_ax5rm")
 
 [connection signal="pressed" from="Play" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="New_game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
