@@ -1,6 +1,6 @@
 extends ParallaxBackground
 
-var speed_cloud: int = 30
+var speed_cloud: int = 60
 var stop_position_cloud: float = 0.0
 	
 func _process(delta):

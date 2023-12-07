@@ -1,43 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://qbur80pkjvgv"]
+[gd_scene load_steps=5 format=3 uid="uid://qbur80pkjvgv"]
 
 [ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_mdpmx"]
-[ext_resource type="Texture2D" uid="uid://fpdyxxdidnuo" path="res://Sprites/Cutscene/Sky.png" id="2_0ht2g"]
-[ext_resource type="Texture2D" uid="uid://dktkq8qp5ke6w" path="res://Sprites/Cutscene/Water.png" id="3_5qt5a"]
+[ext_resource type="Texture2D" uid="uid://da7nxr45kd2uo" path="res://Sprites/Cutscene/Sky_and_island.png" id="2_71efn"]
 [ext_resource type="Texture2D" uid="uid://dd1thg41kyxf4" path="res://Sprites/Cutscene/Cloud_left.png" id="4_0rxwo"]
 [ext_resource type="Texture2D" uid="uid://ca31difbpjyev" path="res://Sprites/Cutscene/Cloud_right.png" id="5_psrcv"]
-[ext_resource type="Texture2D" uid="uid://d0pdybks8ecul" path="res://Sprites/Cutscene/Island.png" id="6_lk4re"]
 
 [node name="Cutscene" type="ParallaxBackground"]
 script = ExtResource("1_mdpmx")
 
-[node name="Layer_water" type="ParallaxLayer" parent="."]
+[node name="Layer_sky_and_island" type="ParallaxLayer" parent="."]
 
-[node name="Water" type="Sprite2D" parent="Layer_water"]
-position = Vector2(960, 827)
-texture = ExtResource("3_5qt5a")
-
-[node name="Layer_sky" type="ParallaxLayer" parent="."]
-
-[node name="Sky" type="Sprite2D" parent="Layer_sky"]
+[node name="SkyAndIsland" type="Sprite2D" parent="Layer_sky_and_island"]
 position = Vector2(960, 540)
-texture = ExtResource("2_0ht2g")
+texture = ExtResource("2_71efn")
 
 [node name="Layer_cloud_left" type="ParallaxLayer" parent="."]
-position = Vector2(-400, 0)
+position = Vector2(-1000, 0)
 
 [node name="CloudLeft" type="Sprite2D" parent="Layer_cloud_left"]
-position = Vector2(897, 540)
+position = Vector2(960, 540)
 texture = ExtResource("4_0rxwo")
 
 [node name="Layer_cloud_right" type="ParallaxLayer" parent="."]
-position = Vector2(400, 0)
+position = Vector2(1000, 0)
 
 [node name="CloudRight" type="Sprite2D" parent="Layer_cloud_right"]
-position = Vector2(1175, 540)
-texture = ExtResource("5_psrcv")
-
-[node name="Layer_island" type="ParallaxLayer" parent="."]
-
-[node name="Island" type="Sprite2D" parent="Layer_island"]
 position = Vector2(960, 540)
-texture = ExtResource("6_lk4re")
+texture = ExtResource("5_psrcv")
