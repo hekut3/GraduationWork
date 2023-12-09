@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://qbur80pkjvgv"]
+[gd_scene load_steps=6 format=3 uid="uid://qbur80pkjvgv"]
 
 [ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_mdpmx"]
-[ext_resource type="Texture2D" uid="uid://da7nxr45kd2uo" path="res://Sprites/Cutscene/Sky_and_island.png" id="2_71efn"]
+[ext_resource type="Texture2D" uid="uid://cmm1pe67v7ky7" path="res://Sprites/Cutscene/Water.png" id="2_0yhlc"]
 [ext_resource type="Texture2D" uid="uid://dd1thg41kyxf4" path="res://Sprites/Cutscene/Cloud_left.png" id="4_0rxwo"]
 [ext_resource type="Texture2D" uid="uid://ca31difbpjyev" path="res://Sprites/Cutscene/Cloud_right.png" id="5_psrcv"]
+[ext_resource type="Texture2D" uid="uid://dpstlw0wu645e" path="res://Sprites/Cutscene/Tower.png" id="5_qinaj"]
 
 [node name="Cutscene" type="ParallaxBackground"]
 script = ExtResource("1_mdpmx")
 
-[node name="Layer_sky_and_island" type="ParallaxLayer" parent="."]
+[node name="Layer_water" type="ParallaxLayer" parent="."]
 
-[node name="SkyAndIsland" type="Sprite2D" parent="Layer_sky_and_island"]
+[node name="Water" type="Sprite2D" parent="Layer_water"]
 position = Vector2(960, 540)
-texture = ExtResource("2_71efn")
+texture = ExtResource("2_0yhlc")
 
 [node name="Layer_cloud_left" type="ParallaxLayer" parent="."]
 position = Vector2(-1000, 0)
@@ -27,3 +28,9 @@ position = Vector2(1000, 0)
 [node name="CloudRight" type="Sprite2D" parent="Layer_cloud_right"]
 position = Vector2(960, 540)
 texture = ExtResource("5_psrcv")
+
+[node name="Layer_tower" type="ParallaxLayer" parent="."]
+
+[node name="Tower" type="Sprite2D" parent="Layer_tower"]
+position = Vector2(977, 555)
+texture = ExtResource("5_qinaj")
