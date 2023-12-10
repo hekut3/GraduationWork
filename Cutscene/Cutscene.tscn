@@ -32,5 +32,5 @@ texture = ExtResource("5_psrcv")
 [node name="Layer_tower" type="ParallaxLayer" parent="."]
 
 [node name="Tower" type="Sprite2D" parent="Layer_tower"]
-position = Vector2(977, 555)
+position = Vector2(985, 589)
 texture = ExtResource("5_qinaj")
