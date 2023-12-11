@@ -1,15 +1,11 @@
-extends ParallaxBackground
+extends Node2D
 
-var speed_cloud: int = 60
-var stop_position_cloud: float = 0.0
-	
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$AnimationPlayer.play("Clouds")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var parallax_layer_cloud_left := $Layer_cloud_left
-	var parallax_layer_cloud_right := $Layer_cloud_right
-	var screen_size = get_viewport().size
-	
-	if parallax_layer_cloud_left.global_position.x <= stop_position_cloud:
-		parallax_layer_cloud_left.motion_offset.x += speed_cloud * delta
-	if parallax_layer_cloud_right.global_position.x >= stop_position_cloud:
-		parallax_layer_cloud_right.motion_offset.x -= speed_cloud * delta
-	
+	pass

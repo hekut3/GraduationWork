@@ -8,4 +8,4 @@ func _on_quit_pressed():
 
 
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://Cutscene/Cutscene.tscn")
+	get_tree().change_scene_to_file("res://Cutscene/cutscene.tscn")
