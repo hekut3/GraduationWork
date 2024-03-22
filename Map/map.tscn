@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=11 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
 [ext_resource type="Texture2D" uid="uid://icaaqd3jau1f" path="res://Sprites/Tile_map/Huts.png" id="2_a2l4y"]
 [ext_resource type="Texture2D" uid="uid://cii7cdkor83ri" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
 [ext_resource type="PackedScene" uid="uid://wanfc6uv5y03" path="res://Player/Player.tscn" id="4_jwcsv"]
 [ext_resource type="PackedScene" uid="uid://c3buy74m2yo53" path="res://Mobs/Wolf.tscn" id="5_3le70"]
+[ext_resource type="Script" path="res://Map/Camera2D.gd" id="5_s3fub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo55l"]
 texture = ExtResource("1_o8j3k")
@@ -309,6 +310,8 @@ sources/4 = SubResource("TileSetAtlasSource_q1b8j")
 [node name="Map" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+light_mask = 3
+visibility_layer = 3
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -16)
@@ -325,5 +328,12 @@ layer_1/tile_data = PackedInt32Array(131135, 262147, 0, 196672, 262147, 0, 26220
 y_sort_enabled = false
 position = Vector2(758, 268)
 
-[node name="Wolf" parent="." instance=ExtResource("5_3le70")]
-position = Vector2(869, 377)
+[node name="Camera2D" type="Camera2D" parent="TileMap/Player" node_paths=PackedStringArray("tilemap")]
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+script = ExtResource("5_s3fub")
+tilemap = NodePath("../..")
+
+[node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
+position = Vector2(869, 393)
