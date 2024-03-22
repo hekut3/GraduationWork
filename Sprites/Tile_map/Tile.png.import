@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by504ym5vckge"
-path="res://.godot/imported/Forest_tile.png-42509e5c163d1c0a3676599fadce65fb.ctex"
+uid="uid://b27qxt0dj3qfx"
+path="res://.godot/imported/Tile.png-46d8f19741b0f01f33bf2ddd4b232aeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tile_map/Forest_tile.png"
-dest_files=["res://.godot/imported/Forest_tile.png-42509e5c163d1c0a3676599fadce65fb.ctex"]
+source_file="res://Sprites/Tile_map/Tile.png"
+dest_files=["res://.godot/imported/Tile.png-46d8f19741b0f01f33bf2ddd4b232aeb.ctex"]
 
 [params]
 
