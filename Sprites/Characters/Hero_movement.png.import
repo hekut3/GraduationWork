@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by504ym5vckge"
-path="res://.godot/imported/Forest_tile.png-42509e5c163d1c0a3676599fadce65fb.ctex"
+uid="uid://bwgljy7mttek4"
+path="res://.godot/imported/Hero_movement.png-6ab0c7a98916bc9a24f34147426f6082.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tile_map/Forest_tile.png"
-dest_files=["res://.godot/imported/Forest_tile.png-42509e5c163d1c0a3676599fadce65fb.ctex"]
+source_file="res://Sprites/Characters/Hero_movement.png"
+dest_files=["res://.godot/imported/Hero_movement.png-6ab0c7a98916bc9a24f34147426f6082.ctex"]
 
 [params]
 
