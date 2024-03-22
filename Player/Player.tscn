@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vv2ms"]
 [ext_resource type="Texture2D" uid="uid://bwgljy7mttek4" path="res://Sprites/Characters/Hero_movement.png" id="2_yj7q2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2xrd"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct0k"]
+size = Vector2(10, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82og0"]
 atlas = ExtResource("2_yj7q2")
@@ -503,14 +503,17 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_vv2ms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_d2xrd")
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_6ct0k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
+y_sort_enabled = true
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_vbm6b")
-animation = &"Attack_down"
+animation = &"Walking_up"
 autoplay = "Idle"
-frame_progress = 0.100538
