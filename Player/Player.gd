@@ -17,3 +17,8 @@ func update_animation():
 		elif velocity.x > 0: animation_player.play("Walk_right")
 		else:
 			animation_player.play("Walk_down")
+
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "HitBox":
+		print(area.get_parent().name)

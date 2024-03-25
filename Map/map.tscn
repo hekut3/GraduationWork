@@ -336,4 +336,4 @@ script = ExtResource("5_s3fub")
 tilemap = NodePath("../..")
 
 [node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
-position = Vector2(774, 367)
+position = Vector2(1053, 312)
