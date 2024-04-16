@@ -22,3 +22,11 @@ func update_animation():
 func _on_hurt_box_area_entered(area):
 	if area.name == "HitBox":
 		print(area.get_parent().name)
+
+
+func _on_inventory_gui_closed():
+	get_tree().paused = false
+
+
+func _on_inventory_gui_opened():
+	get_tree().paused = true

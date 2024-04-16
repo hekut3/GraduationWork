@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crfyq4ukdh7o8"
-path="res://.godot/imported/Glade_tile.png-822683c306b4e62ad7735752ef3cd0db.ctex"
+uid="uid://druuwuot40v8o"
+path="res://.godot/imported/Tile1.png-9d3938e0ecd2020ebe547bc105f0525c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tile_map/Glade_tile.png"
-dest_files=["res://.godot/imported/Glade_tile.png-822683c306b4e62ad7735752ef3cd0db.ctex"]
+source_file="res://Sprites/Tile_map/Tile1.png"
+dest_files=["res://.godot/imported/Tile1.png-9d3938e0ecd2020ebe547bc105f0525c.ctex"]
 
 [params]
 

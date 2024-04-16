@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckhpw1u0pb36o"
-path="res://.godot/imported/Swamp_tile.png-8d6661fb86dd1b88285c6af3545ed316.ctex"
+uid="uid://ddqjfwebqchpn"
+path="res://.godot/imported/Inventory_slot.png-23b1794b4dad2b2d6699fbf51e64b707.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tile_map/Swamp_tile.png"
-dest_files=["res://.godot/imported/Swamp_tile.png-8d6661fb86dd1b88285c6af3545ed316.ctex"]
+source_file="res://Inventory/Inventory_slot.png"
+dest_files=["res://.godot/imported/Inventory_slot.png-23b1794b4dad2b2d6699fbf51e64b707.ctex"]
 
 [params]
 
