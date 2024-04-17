@@ -198,6 +198,7 @@ _data = {
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_vv2ms")
+max_health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=19 format=3 uid="uid://b86y13yib52dr"]
 
+[ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
 [ext_resource type="Texture2D" uid="uid://icaaqd3jau1f" path="res://Sprites/Tile_map/Huts.png" id="2_a2l4y"]
 [ext_resource type="Texture2D" uid="uid://cii7cdkor83ri" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" path="res://Map/Camera2D.gd" id="5_s3fub"]
 [ext_resource type="Script" path="res://Map/CanvasLayer.gd" id="9_a8705"]
 [ext_resource type="PackedScene" uid="uid://ctg3gdchbkt0w" path="res://Inventory/inventory_gui.tscn" id="9_wn1qi"]
+[ext_resource type="PackedScene" uid="uid://biujgvgrmp6dg" path="res://Gui/hearts_container.tscn" id="11_pgmf1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo55l"]
 texture = ExtResource("1_o8j3k")
@@ -497,6 +499,7 @@ sources/5 = SubResource("TileSetAtlasSource_peqcg")
 sources/6 = SubResource("TileSetAtlasSource_i8kww")
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_d11re")
 
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 3
@@ -521,6 +524,7 @@ position = Vector2(695, 323)
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
+position_smoothing_speed = 1.0
 script = ExtResource("5_s3fub")
 tilemap = NodePath("../..")
 
@@ -543,6 +547,8 @@ offset_right = 185.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("11_pgmf1")]
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="TileMap/Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="TileMap/Player" method="_on_inventory_gui_opened"]
