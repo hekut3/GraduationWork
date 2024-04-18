@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://lriv0xn6jkkv"]
+
+[ext_resource type="PackedScene" uid="uid://dgnxk56tca5ss" path="res://Collectables/collectable.tscn" id="1_5hffd"]
+[ext_resource type="Texture2D" uid="uid://dqef0tewkn3bl" path="res://Collectables/Fly_agaric.png" id="2_uqn2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sses"]
+resource_local_to_scene = true
+size = Vector2(8, 7)
+
+[node name="FlyAgaric" instance=ExtResource("1_5hffd")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5sses")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_uqn2g")

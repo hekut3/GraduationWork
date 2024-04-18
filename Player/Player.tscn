@@ -3,12 +3,6 @@
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vv2ms"]
 [ext_resource type="Texture2D" uid="uid://cdouj07x0m5nx" path="res://Sprites/Characters/Hero_movement.png" id="2_yj7q2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct0k"]
-size = Vector2(10, 7)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d55i1"]
-radius = 6.0
-
 [sub_resource type="Animation" id="Animation_hw1fo"]
 resource_name = "Attack_down"
 length = 0.4
@@ -194,23 +188,18 @@ _data = {
 "Walk_up": SubResource("Animation_ce8be")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct0k"]
+size = Vector2(10, 7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d55i1"]
+radius = 6.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_vv2ms")
 max_health = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -3.5)
-shape = SubResource("RectangleShape2D_6ct0k")
-
-[node name="HurtBox" type="Area2D" parent="."]
-light_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -15)
-shape = SubResource("CapsuleShape2D_d55i1")
+knock_back_power = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -223,4 +212,19 @@ libraries = {
 "": SubResource("AnimationLibrary_3af7u")
 }
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_6ct0k")
+
+[node name="HurtBox" type="Area2D" parent="."]
+light_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_d55i1")
+
+[node name="HurtTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]

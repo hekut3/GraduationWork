@@ -6,10 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkblq"]
 size = Vector2(8, 7)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nuxtd"]
-radius = 4.78483
-height = 26.0
-
 [sub_resource type="Animation" id="Animation_xd36c"]
 resource_name = "Attack_down"
 length = 0.7
@@ -1182,26 +1178,24 @@ _data = {
 "Run_up": SubResource("Animation_sn4we")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nuxtd"]
+radius = 4.78483
+height = 26.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6vjw"]
 radius = 118.207
 
 [node name="Wolf" type="CharacterBody2D"]
-light_mask = 2
-visibility_layer = 2
 z_index = 1
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_fsoxv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+light_mask = 2
+visibility_layer = 2
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_tkblq")
-
-[node name="HitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -10)
-rotation = 1.91986
-shape = SubResource("CapsuleShape2D_nuxtd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1213,6 +1207,15 @@ position = Vector2(0, -16)
 texture = ExtResource("1_oi2hq")
 hframes = 15
 vframes = 12
+
+[node name="HitBox" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -10)
+rotation = 1.91986
+shape = SubResource("CapsuleShape2D_nuxtd")
 
 [node name="Detector" type="Area2D" parent="."]
 
