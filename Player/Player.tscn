@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://wanfc6uv5y03"]
+[gd_scene load_steps=20 format=3 uid="uid://wanfc6uv5y03"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vv2ms"]
+[ext_resource type="Resource" uid="uid://ddkqju2i3o0y8" path="res://Inventory/playerInventory.tres" id="2_bfugw"]
 [ext_resource type="Texture2D" uid="uid://cdouj07x0m5nx" path="res://Sprites/Characters/Hero_movement.png" id="2_yj7q2"]
 
 [sub_resource type="Animation" id="Animation_hw1fo"]
@@ -194,18 +195,64 @@ size = Vector2(10, 7)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d55i1"]
 radius = 6.0
 
+[sub_resource type="Animation" id="Animation_ydwir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlkym"]
+resource_name = "hurtBlink"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.537255), Color(1, 0, 0, 0.537255), Color(1, 0, 0, 0.537255), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nc5e"]
+_data = {
+"RESET": SubResource("Animation_ydwir"),
+"hurtBlink": SubResource("Animation_nlkym")
+}
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_vv2ms")
-max_health = 5
-knock_back_power = 1000
+inventory = ExtResource("2_bfugw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
 position = Vector2(0, -16)
 texture = ExtResource("2_yj7q2")
 hframes = 20
 vframes = 9
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+color = Color(1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -224,7 +271,13 @@ position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_d55i1")
 
 [node name="HurtTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1nc5e")
+}
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
 [ext_resource type="Texture2D" uid="uid://icaaqd3jau1f" path="res://Sprites/Tile_map/Huts.png" id="2_a2l4y"]
-[ext_resource type="Texture2D" uid="uid://cii7cdkor83ri" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
+[ext_resource type="Texture2D" uid="uid://dh8r3f3w7l13g" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
 [ext_resource type="PackedScene" uid="uid://lriv0xn6jkkv" path="res://Collectables/fly_agaric.tscn" id="3_1da5v"]
 [ext_resource type="Texture2D" uid="uid://druuwuot40v8o" path="res://Sprites/Tile_map/Tile1.png" id="4_4qwr1"]
 [ext_resource type="PackedScene" uid="uid://ccbr28x7imjhg" path="res://Collectables/openok.tscn" id="4_6yhjl"]
