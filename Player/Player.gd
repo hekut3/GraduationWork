@@ -27,8 +27,7 @@ func handleInput():
 
 func updateAnimation():
 	if velocity.length() == 0:
-		if animation_player.is_playing():
-			animation_player.stop()
+		animation_player.play("Idle")
 	else:
 		if velocity.y < 0: animation_player.play("Walk_up")
 		elif velocity.x < 0: animation_player.play("Walk_left")
