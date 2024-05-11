@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=24 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Map/CanvasLayer.gd" id="9_a8705"]
 [ext_resource type="PackedScene" uid="uid://ctg3gdchbkt0w" path="res://Inventory/inventory_gui.tscn" id="9_wn1qi"]
 [ext_resource type="PackedScene" uid="uid://biujgvgrmp6dg" path="res://Gui/hearts_container.tscn" id="11_pgmf1"]
+[ext_resource type="PackedScene" uid="uid://dpv2bmssddvg8" path="res://Mobs/Devil.tscn" id="13_qi5xp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo55l"]
 texture = ExtResource("1_o8j3k")
@@ -515,7 +516,7 @@ script = ExtResource("1_d11re")
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(0, -16)
+position = Vector2(1, -45)
 tile_set = SubResource("TileSet_rfc1f")
 format = 2
 layer_0/name = "Ground"
@@ -541,6 +542,13 @@ tilemap = NodePath("../..")
 
 [node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
 position = Vector2(1053, 312)
+
+[node name="Devil" parent="TileMap" node_paths=PackedStringArray("end_point") instance=ExtResource("13_qi5xp")]
+position = Vector2(783, 291)
+end_point = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/Devil"]
+position = Vector2(29, 78)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
