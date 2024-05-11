@@ -548,7 +548,7 @@ position = Vector2(783, 291)
 end_point = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/Devil"]
-position = Vector2(29, 78)
+position = Vector2(56, 69)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

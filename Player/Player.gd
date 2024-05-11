@@ -16,7 +16,8 @@ var speed = 60 # Скорость передвижения персонажа
 @export var inventory: Inventory
 
 var isHurt: bool = false
-var lastAnimDirection: String = "Down"
+var lastAnimDirection: String = "_down"
+var isAttacking: bool = false
 
 func _ready():
 	effects.play("RESET")
@@ -24,16 +25,28 @@ func _ready():
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
+	
+	if Input.is_action_just_pressed("attack"):
+		attack()
+
+func attack():
+	animation_player.play("Attack" + lastAnimDirection)
+	isAttacking = true
+	await  animation_player.animation_finished
+	isAttacking = false
 
 func updateAnimation():
+	if isAttacking: return
+	
 	if velocity.length() == 0:
 		animation_player.play("Idle")
 	else:
-		if velocity.y < 0: animation_player.play("Walk_up")
-		elif velocity.x < 0: animation_player.play("Walk_left")
-		elif velocity.x > 0: animation_player.play("Walk_right")
-		else:
-			animation_player.play("Walk_down")
+		var direction = "_down"
+		if velocity.y < 0: direction = "_up"
+		elif velocity.x < 0: direction = "_left"
+		elif velocity.x > 0: direction = "_right"
+		animation_player.play("Walk" + direction)
+		lastAnimDirection = direction
 
 func _physics_process(_delta):
 	handleInput()

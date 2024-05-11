@@ -7,7 +7,6 @@
 [sub_resource type="Animation" id="Animation_hw1fo"]
 resource_name = "Attack_down"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,7 +23,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_qt5v8"]
 resource_name = "Attack_left"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +39,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_v5380"]
 resource_name = "Attack_right"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,7 +55,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_m0or4"]
 resource_name = "Attack_up"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

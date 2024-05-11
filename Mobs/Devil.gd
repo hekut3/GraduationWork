@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
-@export var speed = 20
+@export var speed = 40
 @export var limit = 0.5
 @export var end_point: Marker2D
+
+var idle_timer = 10
+var chase = false
+var player = null
 
 @onready var animations = $AnimationPlayer
 
@@ -25,12 +29,31 @@ func update_velocity():
 	velocity = move_direction.normalized() * speed
 
 func update_animations():
-	var animation_string = "walk_up"
-	if velocity.y > 0:
-		animation_string = "walk_down"
-	animations.play(animation_string)
+	if velocity.length() == 0:
+		if animations.is_playing():
+			animations.stop()
+	else:
+		var direction = "_down"
+		if velocity.x < 0: direction = "_left"
+		elif velocity.x > 0: direction = "_right"
+		elif velocity.y < 0: direction = "_up"
+		
+		animations.play("walk" + direction)
 
 func _physics_process(delta):
+	if chase:
+		position += (player.position - position) / speed
+		
+	
+		
 	update_velocity()
 	move_and_slide()
 	update_animations()
+
+func _on_detector_body_entered(body):
+	player = body
+	chase = true
+
+func _on_detector_body_exited(body):
+	player = null
+	chase = false
