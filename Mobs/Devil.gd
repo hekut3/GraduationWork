@@ -40,7 +40,7 @@ func update_animations():
 		
 		animations.play("walk" + direction)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if chase:
 		position += (player.position - position) / speed
 		
@@ -54,6 +54,6 @@ func _on_detector_body_entered(body):
 	player = body
 	chase = true
 
-func _on_detector_body_exited(body):
+func _on_detector_body_exited(_body):
 	player = null
 	chase = false

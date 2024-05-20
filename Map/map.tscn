@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=26 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
 [ext_resource type="Texture2D" uid="uid://icaaqd3jau1f" path="res://Sprites/Tile_map/Huts.png" id="2_a2l4y"]
+[ext_resource type="Script" path="res://Map/Manager.gd" id="2_hg1je"]
 [ext_resource type="Texture2D" uid="uid://dh8r3f3w7l13g" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
 [ext_resource type="PackedScene" uid="uid://lriv0xn6jkkv" path="res://Collectables/fly_agaric.tscn" id="3_1da5v"]
 [ext_resource type="Texture2D" uid="uid://druuwuot40v8o" path="res://Sprites/Tile_map/Tile1.png" id="4_4qwr1"]
@@ -16,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ctg3gdchbkt0w" path="res://Inventory/inventory_gui.tscn" id="9_wn1qi"]
 [ext_resource type="PackedScene" uid="uid://biujgvgrmp6dg" path="res://Gui/hearts_container.tscn" id="11_pgmf1"]
 [ext_resource type="PackedScene" uid="uid://dpv2bmssddvg8" path="res://Mobs/Devil.tscn" id="13_qi5xp"]
+[ext_resource type="PackedScene" uid="uid://1alr7npi2ea4" path="res://Menu/pause_menu.tscn" id="18_67522"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo55l"]
 texture = ExtResource("1_o8j3k")
@@ -513,6 +515,10 @@ sources/1 = SubResource("TileSetScenesCollectionSource_jkde8")
 [node name="Map" type="Node2D"]
 script = ExtResource("1_d11re")
 
+[node name="Manager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_hg1je")
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
@@ -569,5 +575,12 @@ grow_vertical = 2
 
 [node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("11_pgmf1")]
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("18_67522")]
+process_mode = 2
+
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="TileMap/Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="TileMap/Player" method="_on_inventory_gui_opened"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Resume" to="Manager" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Exit" to="Manager" method="_on_exit_pressed"]
+
+[editable path="CanvasLayer/PauseMenu"]

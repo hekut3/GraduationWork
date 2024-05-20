@@ -86,5 +86,5 @@ func _on_inventory_gui_closed():
 func _on_inventory_gui_opened():
 	get_tree().paused = true
 
-func _on_hurt_box_area_exited(area):
+func _on_hurt_box_area_exited(_area):
 	pass

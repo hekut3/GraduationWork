@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://1alr7npi2ea4"]
+
+[ext_resource type="Texture2D" uid="uid://csj4pt7av2xyf" path="res://Sprites/Buttons/button_play_normal.png" id="1_oj6vb"]
+[ext_resource type="Texture2D" uid="uid://bvlp8ieiy3u4b" path="res://Sprites/Buttons/button_play_hover.png" id="2_jsh16"]
+[ext_resource type="Texture2D" uid="uid://hju36ugk7ln" path="res://Sprites/Buttons/button_exit_normal.png" id="5_dfpl5"]
+[ext_resource type="Texture2D" uid="uid://d5h576dm6kmn" path="res://Sprites/Buttons/button_exit_hover.png" id="6_m6guy"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -223.0
+offset_right = 174.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -113.0
+offset_right = 150.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_oj6vb")
+texture_hover = ExtResource("2_jsh16")
+
+[node name="Exit" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_dfpl5")
+texture_hover = ExtResource("6_m6guy")

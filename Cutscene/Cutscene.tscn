@@ -286,3 +286,5 @@ texture = ExtResource("7_iur65")
 [node name="EndCutscene" type="Sprite2D" parent="AnimationPlayer"]
 position = Vector2(960, 540)
 texture = ExtResource("10_oma88")
+
+[node name="Timer" type="Timer" parent="."]
