@@ -19,6 +19,9 @@ var is_hurt: bool = false
 var last_anim_direction: String = "_down"
 var is_attacking: bool = false
 
+func _ready():
+	effects.play("RESET")
+
 func handle_input():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
@@ -77,12 +80,6 @@ func knockback(enemyVelocity: Vector2):
 	var knockback_direction = (enemyVelocity - velocity).normalized() * knockback_power
 	velocity = knockback_direction
 	move_and_slide()
-
-func _on_inventory_gui_closed():
-	get_tree().paused = false
-
-func _on_inventory_gui_opened():
-	get_tree().paused = true
 
 func _on_hurt_box_area_exited(_area):
 	pass

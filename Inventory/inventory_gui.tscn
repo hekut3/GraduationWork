@@ -15,12 +15,34 @@ script = ExtResource("1_d6110")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 offset_right = 370.0
-offset_bottom = 160.0
+offset_bottom = 172.0
 texture = ExtResource("1_prhcr")
 patch_margin_left = 14
 patch_margin_top = 13
 patch_margin_right = 13
 patch_margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 353.0
+offset_bottom = 79.0
+
+[node name="Slot" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_3c8us")]
+layout_mode = 2
+
+[node name="Slot2" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_3c8us")]
+layout_mode = 2
+
+[node name="Slot3" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_3c8us")]
+layout_mode = 2
+
+[node name="Slot4" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_3c8us")]
+layout_mode = 2
+
+[node name="Slot5" parent="NinePatchRect/HBoxContainer" instance=ExtResource("2_3c8us")]
+layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 1
@@ -29,28 +51,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -34.0
-offset_right = 88.0
-offset_bottom = 34.0
+offset_left = -168.0
+offset_top = 7.0
+offset_right = 168.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 5
-
-[node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
-layout_mode = 2
-
-[node name="Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
-layout_mode = 2
-
-[node name="Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
-layout_mode = 2
-
-[node name="Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
-layout_mode = 2
-
-[node name="Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
-layout_mode = 2
 
 [node name="Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_3c8us")]
 layout_mode = 2

@@ -738,7 +738,6 @@ color = Color(1, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_3af7u")
 }
-autoplay = "Idle"
 
 [node name="HurtBox" type="Area2D" parent="."]
 light_mask = 3

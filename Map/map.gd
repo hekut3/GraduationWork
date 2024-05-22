@@ -8,3 +8,8 @@ func _ready():
 	hearts_container.update_hearts(player.current_health)
 	player.health_changed.connect(hearts_container.update_hearts)
 
+func _on_inventory_gui_closed():
+	get_tree().paused = false
+
+func _on_inventory_gui_opened():
+	get_tree().paused = true
