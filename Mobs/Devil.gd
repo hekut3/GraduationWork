@@ -8,7 +8,7 @@ var idle_timer = 10
 var chase = false
 var player = null
 
-@onready var animations = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
 var start_position
 var end_position
@@ -28,32 +28,30 @@ func update_velocity():
 		change_direction()
 	velocity = move_direction.normalized() * speed
 
-func update_animations():
+func update_animation():
 	if velocity.length() == 0:
-		if animations.is_playing():
-			animations.stop()
+		if animation_player.is_playing():
+			animation_player.stop()
 	else:
 		var direction = "_down"
 		if velocity.x < 0: direction = "_left"
 		elif velocity.x > 0: direction = "_right"
 		elif velocity.y < 0: direction = "_up"
 		
-		animations.play("walk" + direction)
+		animation_player.play("walk" + direction)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if chase:
-		position += (player.position - position) / speed
-		
-	
+		position += ($"../Player".position - self.position).normalized() * speed * delta
 		
 	update_velocity()
 	move_and_slide()
-	update_animations()
+	update_animation()
 
 func _on_detector_body_entered(body):
-	player = body
-	chase = true
+	if body.is_in_group("Player"):
+		chase = true
 
-func _on_detector_body_exited(_body):
-	player = null
-	chase = false
+func _on_detector_body_exited(body):
+	if body.is_in_group("Player"):
+		chase = false

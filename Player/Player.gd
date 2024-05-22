@@ -11,18 +11,15 @@ var speed = 60 # Скорость передвижения персонажа
 @export var max_health = 3
 @onready var current_health: int = max_health
 
-@export var knockbackPower: int = 400
+@export var knockback_power: int = 400
 
 @export var inventory: Inventory
 
-var isHurt: bool = false
-var lastAnimDirection: String = "_down"
-var isAttacking: bool = false
+var is_hurt: bool = false
+var last_anim_direction: String = "_down"
+var is_attacking: bool = false
 
-func _ready():
-	effects.play("RESET")
-
-func handleInput():
+func handle_input():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
 	
@@ -30,54 +27,55 @@ func handleInput():
 		attack()
 
 func attack():
-	animation_player.play("Attack" + lastAnimDirection)
-	isAttacking = true
+	animation_player.play("Attack" + last_anim_direction)
+	is_attacking = true
 	await  animation_player.animation_finished
-	isAttacking = false
+	is_attacking = false
 
-func updateAnimation():
-	if isAttacking: return
+func update_animation():
+	if is_attacking: return
 	
 	if velocity.length() == 0:
-		animation_player.play("Idle")
+		if animation_player.is_playing():
+			animation_player.stop()
 	else:
 		var direction = "_down"
 		if velocity.y < 0: direction = "_up"
 		elif velocity.x < 0: direction = "_left"
 		elif velocity.x > 0: direction = "_right"
 		animation_player.play("Walk" + direction)
-		lastAnimDirection = direction
+		last_anim_direction = direction
 
 func _physics_process(_delta):
-	handleInput()
+	handle_input()
 	move_and_slide()
-	updateAnimation()
-	if !isHurt:
+	update_animation()
+	if !is_hurt:
 		for area in hurt_box.get_overlapping_areas():
 			if area.name == "HitBox":
-				hurtByEnemy(area)
+				hurt_by_enemy(area)
 
-func hurtByEnemy(area):
+func hurt_by_enemy(area):
 	current_health -= 1
 	if current_health < 0:
 		current_health = max_health
 		
 	health_changed.emit(current_health)
-	isHurt = true
+	is_hurt = true
 	knockback(area.get_parent().velocity)
 	effects.play("hurtBlink")
 	hurt_timer.start()
 	await hurt_timer.timeout
 	effects.play("RESET")
-	isHurt = false
+	is_hurt = false
 
 func _on_hurt_box_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
 
 func knockback(enemyVelocity: Vector2):
-	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
-	velocity = knockbackDirection
+	var knockback_direction = (enemyVelocity - velocity).normalized() * knockback_power
+	velocity = knockback_direction
 	move_and_slide()
 
 func _on_inventory_gui_closed():
