@@ -10,6 +10,7 @@ var is_open_inventory: bool = false
 @onready var hotbar_slots: Array = $NinePatchRect/HBoxContainer.get_children()
 @onready var slots: Array = hotbar_slots + $NinePatchRect/GridContainer.get_children()
 
+var save = "user://inventory.save"
 
 var item_in_hand: ItemStackGui
 
@@ -93,3 +94,22 @@ func update_item_hand():
 	
 func _input(_event):
 	update_item_hand()
+
+func save_inventory_gui():
+	var file = FileAccess.open(save, FileAccess.WRITE)
+	if file:
+		file.store_var(inventory.slots)
+		file.close()
+		print("Инвентарь сохранен")
+	else:
+		print("Ошибка при сохранении инвентаря")
+
+func load_inventory_gui():
+	var file = FileAccess.open(save, FileAccess.READ)
+	if file:
+		slots = file.get_var()
+		file.close()
+		#inventory.update() # Обновляем инвентарь после загрузки данных
+		print("Инвентарь загружен")
+	else:
+		print("Ошибка при загрузке инвентаря")

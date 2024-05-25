@@ -83,3 +83,4 @@ func knockback(enemyVelocity: Vector2):
 
 func _on_hurt_box_area_exited(_area):
 	pass
+
