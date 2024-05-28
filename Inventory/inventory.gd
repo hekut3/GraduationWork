@@ -23,7 +23,6 @@ func insert(item: InventoryItem):
 func remove_slot(inventory_slot: InventorySlot):
 	var index = slots.find(inventory_slot)
 	if index < 0: return
-	
 	slots[index] = InventorySlot.new()
 	updated.emit()
 	

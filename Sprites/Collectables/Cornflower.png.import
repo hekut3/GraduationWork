@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy1xs5muct6mi"
-path="res://.godot/imported/Health.png-1b06ef9b03ee1ffc6925889cf2d2f27b.ctex"
+uid="uid://df8x5cif6o3y0"
+path="res://.godot/imported/Cornflower.png-fb4ef4641338d3d2e04a0be32b32fabd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gui/Health.png"
-dest_files=["res://.godot/imported/Health.png-1b06ef9b03ee1ffc6925889cf2d2f27b.ctex"]
+source_file="res://Sprites/Collectables/Cornflower.png"
+dest_files=["res://.godot/imported/Cornflower.png-fb4ef4641338d3d2e04a0be32b32fabd.ctex"]
 
 [params]
 

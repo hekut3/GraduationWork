@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal  health_changed
+signal fly_agaric_collected
 
 var speed = 60 # Скорость передвижения персонажа
 @onready var animation_player = $AnimationPlayer
@@ -83,4 +84,3 @@ func knockback(enemyVelocity: Vector2):
 
 func _on_hurt_box_area_exited(_area):
 	pass
-

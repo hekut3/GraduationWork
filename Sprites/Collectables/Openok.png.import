@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqef0tewkn3bl"
-path="res://.godot/imported/Fly_agaric.png-fd88220b51391d97c8d2a3bcad7086e0.ctex"
+uid="uid://u54dsw5kn1g2"
+path="res://.godot/imported/Openok.png-4709ffb2e35e47dc16db10a7aab95b2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Collectables/Fly_agaric.png"
-dest_files=["res://.godot/imported/Fly_agaric.png-fd88220b51391d97c8d2a3bcad7086e0.ctex"]
+source_file="res://Sprites/Collectables/Openok.png"
+dest_files=["res://.godot/imported/Openok.png-4709ffb2e35e47dc16db10a7aab95b2f.ctex"]
 
 [params]
 

@@ -4,6 +4,7 @@ extends Node
 @onready var player = $"../TileMap/Player"
 @onready var hearts_container = $"../CanvasLayer/heartsContainer"
 
+
 var game_paused: bool = false
 
 var save_path = "user://savegame.save"
@@ -48,4 +49,3 @@ func load_game() -> void:
 	player.current_health = file.get_var(player.current_health)
 	file.close()
 	hearts_container.update_hearts(player.current_health)
-	

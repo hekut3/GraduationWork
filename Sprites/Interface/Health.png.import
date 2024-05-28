@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyr226w4d5ybx"
-path="res://.godot/imported/Inventory_rect.png-c57e0f6a6d25379152298743ad5025b8.ctex"
+uid="uid://dy1xs5muct6mi"
+path="res://.godot/imported/Health.png-14d8321254dc12b0b63c17dd998e1792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory/Inventory_rect.png"
-dest_files=["res://.godot/imported/Inventory_rect.png-c57e0f6a6d25379152298743ad5025b8.ctex"]
+source_file="res://Sprites/Interface/Health.png"
+dest_files=["res://.godot/imported/Health.png-14d8321254dc12b0b63c17dd998e1792.ctex"]
 
 [params]
 

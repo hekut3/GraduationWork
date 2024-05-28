@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctg3gdchbkt0w"]
 
 [ext_resource type="Script" path="res://Inventory/inventory_gui.gd" id="1_d6110"]
-[ext_resource type="Texture2D" uid="uid://dyr226w4d5ybx" path="res://Inventory/Inventory_rect.png" id="1_prhcr"]
 [ext_resource type="PackedScene" uid="uid://c2uons2yfotdf" path="res://Inventory/slot.tscn" id="2_3c8us"]
+[ext_resource type="Texture2D" uid="uid://dyr226w4d5ybx" path="res://Sprites/Interface/Inventory_rect.png" id="2_ps8gx"]
 
 [node name="InventoryGui" type="Control"]
 custom_minimum_size = Vector2(210, 96)
@@ -16,7 +16,7 @@ script = ExtResource("1_d6110")
 layout_mode = 1
 offset_right = 370.0
 offset_bottom = 172.0
-texture = ExtResource("1_prhcr")
+texture = ExtResource("2_ps8gx")
 patch_margin_left = 14
 patch_margin_top = 13
 patch_margin_right = 13

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgnxk56tca5ss" path="res://Collectables/collectable.tscn" id="1_5hffd"]
 [ext_resource type="Resource" uid="uid://bdxd01hpy3qm1" path="res://Inventory/Items/fly_agaric.tres" id="2_21yh3"]
-[ext_resource type="Texture2D" uid="uid://dqef0tewkn3bl" path="res://Collectables/Fly_agaric.png" id="2_uqn2g"]
+[ext_resource type="Texture2D" uid="uid://dqef0tewkn3bl" path="res://Sprites/Collectables/Fly_agaric.png" id="2_uqn2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sses"]
 resource_local_to_scene = true

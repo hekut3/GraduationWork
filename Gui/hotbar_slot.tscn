@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dolq5ioo4w1uh"]
 
 [ext_resource type="Script" path="res://Gui/hotbar_slot.gd" id="1_tjris"]
-[ext_resource type="Texture2D" uid="uid://ddqjfwebqchpn" path="res://Inventory/Inventory_slot.png" id="2_xw5b3"]
+[ext_resource type="Texture2D" uid="uid://ddqjfwebqchpn" path="res://Sprites/Interface/Inventory_slot.png" id="2_xw5b3"]
 [ext_resource type="PackedScene" uid="uid://bpj12f8e20dd" path="res://Gui/items_stack_gui.tscn" id="3_mwe7x"]
 
 [node name="HotbarSlot" type="Button"]

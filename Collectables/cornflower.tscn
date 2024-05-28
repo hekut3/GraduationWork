@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbb3cp6fa5d8"]
 
 [ext_resource type="PackedScene" uid="uid://dgnxk56tca5ss" path="res://Collectables/collectable.tscn" id="1_e3ba2"]
-[ext_resource type="Texture2D" uid="uid://df8x5cif6o3y0" path="res://Collectables/Cornflower.png" id="2_eo4da"]
+[ext_resource type="Texture2D" uid="uid://df8x5cif6o3y0" path="res://Sprites/Collectables/Cornflower.png" id="2_eo4da"]
 [ext_resource type="Resource" uid="uid://bchyu3kgwwh78" path="res://Inventory/Items/cornflower.tres" id="2_jw1c4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h833r"]

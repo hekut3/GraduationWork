@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u54dsw5kn1g2"
-path="res://.godot/imported/Openok.png-382dceb8a5a8aeac5ff98d3e88630eeb.ctex"
+uid="uid://qnin6j1y7ro8"
+path="res://.godot/imported/Chat_rect.png-1f744164e01511c852ac85ab9bd96cd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Collectables/Openok.png"
-dest_files=["res://.godot/imported/Openok.png-382dceb8a5a8aeac5ff98d3e88630eeb.ctex"]
+source_file="res://Sprites/Interface/Chat_rect.png"
+dest_files=["res://.godot/imported/Chat_rect.png-1f744164e01511c852ac85ab9bd96cd0.ctex"]
 
 [params]
 
