@@ -29,3 +29,4 @@ func remove_slot(inventory_slot: InventorySlot):
 func insert_slot(index: int, inventory_slot: InventorySlot):
 	slots[index] = inventory_slot
 	updated.emit()
+

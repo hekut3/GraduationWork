@@ -29,13 +29,15 @@ func handle_input():
 	
 	if Input.is_action_just_pressed("attack"):
 		attack()
-
+		
 func attack():
-	animation_player.play("Attack" + last_anim_direction)
+	$AreaAttack/CollisionShapeAttack.disabled = false
 	is_attacking = true
+	animation_player.play("Attack" + last_anim_direction)
 	await  animation_player.animation_finished
+	$AreaAttack/CollisionShapeAttack.disabled = true
 	is_attacking = false
-
+	
 func update_animation():
 	if is_attacking: return
 	
@@ -84,3 +86,7 @@ func knockback(enemyVelocity: Vector2):
 
 func _on_hurt_box_area_exited(_area):
 	pass
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Wolf") or body.is_in_group("Devil"):
+		body.take_damage(1)

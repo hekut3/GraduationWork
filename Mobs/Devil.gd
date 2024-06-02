@@ -7,6 +7,7 @@ extends CharacterBody2D
 var idle_timer = 10
 var chase = false
 var player = null
+var health = 3
 
 @onready var animation_player = $AnimationPlayer
 
@@ -55,3 +56,9 @@ func _on_detector_body_entered(body):
 func _on_detector_body_exited(body):
 	if body.is_in_group("Player"):
 		chase = false
+
+func take_damage(amount):
+	health -= amount
+	if  health <= 0:
+		#animation_player.play("Death_left")
+		queue_free()

@@ -1181,7 +1181,7 @@ height = 26.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6vjw"]
 radius = 118.207
 
-[node name="Wolf" type="CharacterBody2D"]
+[node name="Wolf" type="CharacterBody2D" groups=["Wolf"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 2

@@ -5,43 +5,43 @@
 
 [sub_resource type="Resource" id="Resource_q3fvn"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_bnrri"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_gfn07"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_potkf"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_1w013"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_rm5q8"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_wds1o"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_fy0ah"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_cemn1"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [sub_resource type="Resource" id="Resource_lbo8u"]
 script = ExtResource("2_etoix")
-amount = 0
+amount = null
 
 [resource]
 script = ExtResource("1_8hym0")

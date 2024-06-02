@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=29 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Map/Manager.gd" id="2_hg1je"]
 [ext_resource type="Texture2D" uid="uid://dh8r3f3w7l13g" path="res://Sprites/Tile_map/Objects.png" id="2_ov7ro"]
 [ext_resource type="PackedScene" uid="uid://lriv0xn6jkkv" path="res://Collectables/fly_agaric.tscn" id="3_1da5v"]
+[ext_resource type="Script" path="res://Inventory/inventory.gd" id="3_c1vpa"]
 [ext_resource type="Texture2D" uid="uid://druuwuot40v8o" path="res://Sprites/Tile_map/Tile1.png" id="4_4qwr1"]
 [ext_resource type="PackedScene" uid="uid://ccbr28x7imjhg" path="res://Collectables/openok.tscn" id="4_6yhjl"]
 [ext_resource type="PackedScene" uid="uid://wanfc6uv5y03" path="res://Player/Player.tscn" id="4_jwcsv"]
@@ -521,6 +522,9 @@ script = ExtResource("1_d11re")
 process_mode = 3
 script = ExtResource("2_hg1je")
 
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_c1vpa")
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
@@ -549,7 +553,7 @@ script = ExtResource("5_s3fub")
 tilemap = NodePath("../..")
 
 [node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
-position = Vector2(602, 428)
+position = Vector2(1053, 312)
 
 [node name="Devil" parent="TileMap" node_paths=PackedStringArray("end_point") instance=ExtResource("13_qi5xp")]
 position = Vector2(783, 291)
