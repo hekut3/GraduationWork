@@ -90,3 +90,15 @@ func _on_hurt_box_area_exited(_area):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Wolf") or body.is_in_group("Devil"):
 		body.take_damage(1)
+
+func take_damage(amount):
+	current_health -= amount
+	if current_health < 0:
+		current_health = max_health
+	health_changed.emit(current_health)
+	effects.play("hurtBlink")
+	hurt_timer.start()
+	await hurt_timer.timeout
+	effects.play("RESET")
+	#if  current_health <= 0:
+		#queue_free()

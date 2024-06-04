@@ -2,48 +2,61 @@ extends CharacterBody2D
 
 var speed = 40
 var chase = false
-var idle_timer = 10
 var health = 2
+var is_attacking: bool = false
+var last_anim_direction: String = "_down"
+var attack_pause: float = 0.2
+
+@onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
 
-func _process(delta):
-	var direction = ($"../Player".position - self.position).normalized().x
+func update_velocity():
+	var direction = (player.position - self.position)
 	if chase:
-		position += ($"../Player".position - self.position).normalized() * speed * delta
-		update_animation()
+		velocity = direction.normalized() * speed
 	else:
-		idle_timer -= delta
-		if idle_timer <= 0:
-			if direction < 0:
-				animation_player.play("Idle_left")
-			else:
-				animation_player.play("Idle_right")
-	move_and_slide()
+		velocity = Vector2.ZERO
+		animation_player.play("idle_left")
 
 func update_animation():
-	var direction = ($"../Player".position - self.position).normalized()
-	if direction.length() == 0:
-		animation_player.stop()
+	if is_attacking: return
+	
 	else:
-		idle_timer = 10
-		if direction.y < 0: animation_player.play("Run_up")
-		elif direction.x < 0: animation_player.play("Run_left")
-		elif direction.x > 0: animation_player.play("Run_right")
+		var direction = ""
+		if abs(velocity.x) > abs(velocity.y):
+			if velocity.x < 0: direction = "_left"
+			elif  velocity.x > 0: direction = "_right"
 		else:
-			animation_player.play("Run_down")
+			if velocity.y < 0: direction = "_up"
+			elif velocity.y > 0: direction = "_down"
+		animation_player.play("run" + direction)
+		last_anim_direction = direction
+
+func _physics_process(_delta):
+	update_velocity()
+	move_and_slide()
+	update_animation()
 
 func _on_detector_body_entered(body):
 	if body.is_in_group("Player"):
 		chase = true
-		idle_timer = 10
 
 func _on_detector_body_exited(body):
 	if body.is_in_group("Player"):
 		chase = false
-		animation_player.stop()
 
 func take_damage(amount):
 	health -= amount
 	if  health <= 0:
-		animation_player.play("Death_left")
+		animation_player.play("death_left")
 		queue_free()
+
+func _on_area_attack_body_entered(body):
+	if body.is_in_group("Player"):
+		is_attacking = true
+		animation_player.play("attack" + last_anim_direction)
+		body.take_damage(1)
+
+func _on_area_attack_body_exited(body):
+	if body.is_in_group("Player"):
+		is_attacking = false

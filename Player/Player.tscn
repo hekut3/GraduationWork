@@ -1074,7 +1074,7 @@ _data = {
 radius = 4.75
 height = 20.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_vv2ms")
