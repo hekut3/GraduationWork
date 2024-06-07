@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpv2bmssddvg8"]
+[gd_scene load_steps=17 format=3 uid="uid://dpv2bmssddvg8"]
 
 [ext_resource type="Script" path="res://Mobs/Devil.gd" id="1_k8m5e"]
 [ext_resource type="Texture2D" uid="uid://dr8ammdsj3ohm" path="res://Sprites/Characters/Vlad.png" id="1_xqd15"]
@@ -29,7 +29,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -1)]
 }
 tracks/2/type = "value"
@@ -41,7 +41,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(1, 1)]
 }
 tracks/3/type = "value"
@@ -53,7 +53,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -11)]
 }
 tracks/4/type = "value"
@@ -65,7 +65,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
@@ -77,7 +77,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, 3)]
 }
 tracks/6/type = "value"
@@ -89,7 +89,7 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [1.5708]
 }
 tracks/7/type = "value"
@@ -101,14 +101,13 @@ tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_a0xgk"]
 resource_name = "attack_down"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -179,7 +178,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, 3)]
+"values": [Vector2(0, 14)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -191,7 +190,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1.5708]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -203,13 +202,12 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(1, 1)]
+"values": [Vector2(3, 1.8)]
 }
 
 [sub_resource type="Animation" id="Animation_4qr4c"]
 resource_name = "attack_left"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -310,7 +308,6 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_e62ya"]
 resource_name = "attack_right"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -411,7 +408,6 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_txat5"]
 resource_name = "attack_up"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -509,72 +505,6 @@ tracks/7/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_h51x0"]
-resource_name = "walk"
-length = 0.75
-loop_mode = 1
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(6, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -11)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HitBox/CollisionShape2D:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_whnbu"]
 resource_name = "walk_down"
 length = 0.75
@@ -650,7 +580,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(0, 3)]
+"values": [Vector2(0, 14)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -662,7 +592,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1.5708]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -674,7 +604,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(1, 1)]
+"values": [Vector2(3, 1.8)]
 }
 
 [sub_resource type="Animation" id="Animation_1hayp"]
@@ -978,7 +908,6 @@ _data = {
 "attack_left": SubResource("Animation_4qr4c"),
 "attack_right": SubResource("Animation_e62ya"),
 "attack_up": SubResource("Animation_txat5"),
-"walk": SubResource("Animation_h51x0"),
 "walk_down": SubResource("Animation_whnbu"),
 "walk_left": SubResource("Animation_1hayp"),
 "walk_right": SubResource("Animation_gee5v"),
