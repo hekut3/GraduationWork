@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://b512b7auw1vsx"]
+
+[ext_resource type="Script" path="res://NPC/daria.gd" id="1_eqrqh"]
+[ext_resource type="Texture2D" uid="uid://xsumpwyke0u5" path="res://Sprites/Characters/Daria.png" id="1_ljyul"]
+[ext_resource type="PackedScene" uid="uid://bil3yh8nxalg2" path="res://NPC/dialogue.tscn" id="3_4yvq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mt0h"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d06rl"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krn2d"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj1xx"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sq2h"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux0bi"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa1ed"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_223gv"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go3xp"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s24v6"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs6cy"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jchj7"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvga8"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrnnm"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpct8"]
+atlas = ExtResource("1_ljyul")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xdve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mt0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d06rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krn2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj1xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sq2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux0bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa1ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_223gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go3xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s24v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs6cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jchj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvga8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrnnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpct8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2o8n"]
+size = Vector2(12, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg67h"]
+radius = 42.2966
+
+[node name="Daria" type="CharacterBody2D"]
+script = ExtResource("1_eqrqh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_4xdve")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_o2o8n")
+
+[node name="ChatDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetectionArea"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_hg67h")
+
+[node name="Dialogue" parent="." instance=ExtResource("3_4yvq0")]
+
+[connection signal="body_entered" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]

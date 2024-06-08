@@ -7,21 +7,24 @@ signal dialogue_finished
 var dialogue = []
 var current_dialogue_id = 0
 var dialogue_active = false
+var character_name = ""
 
 func _ready():
 	$NinePatchRect.visible = false
 	
-func start():
+func start(character, dialogue_number):
 	if dialogue_active:
 		return
+	character_name = character
 	dialogue_active = true
 	$NinePatchRect.visible = true
-	dialogue = load_dialogue()
+	dialogue = load_dialogue(character_name, dialogue_number)
 	current_dialogue_id = -1
 	next_script()
 	
-func load_dialogue():
-	var file = FileAccess.open("res://NPC/Yaga_dialogue1.json", FileAccess.READ)
+func load_dialogue(character, dialogue_number):
+	var file_path = "res://NPC/" + character + "_dialogues/" + character + "_dialogue" + str(dialogue_number) + ".json"
+	var file = FileAccess.open(file_path, FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 	

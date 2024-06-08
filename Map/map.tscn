@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=29 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://biujgvgrmp6dg" path="res://Gui/hearts_container.tscn" id="11_pgmf1"]
 [ext_resource type="PackedScene" uid="uid://dpv2bmssddvg8" path="res://Mobs/Devil.tscn" id="13_qi5xp"]
 [ext_resource type="PackedScene" uid="uid://n0m0w8hbstne" path="res://NPC/yaga.tscn" id="15_r3knq"]
+[ext_resource type="PackedScene" uid="uid://b512b7auw1vsx" path="res://NPC/daria.tscn" id="16_ojui1"]
 [ext_resource type="PackedScene" uid="uid://1alr7npi2ea4" path="res://Menu/pause_menu.tscn" id="18_67522"]
 [ext_resource type="PackedScene" uid="uid://dfgjjmlbajb48" path="res://Gui/hotbar.tscn" id="19_mhsxf"]
 
@@ -538,7 +539,7 @@ layer_2/tile_data = PackedInt32Array(1507376, 1, 65536, 1638441, 1, 65536, 16384
 
 [node name="Player" parent="TileMap" instance=ExtResource("4_jwcsv")]
 y_sort_enabled = false
-position = Vector2(695, 323)
+position = Vector2(667, 300)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/Player" node_paths=PackedStringArray("tilemap")]
 zoom = Vector2(4, 4)
@@ -549,9 +550,10 @@ script = ExtResource("5_s3fub")
 tilemap = NodePath("../..")
 
 [node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
-position = Vector2(602, 428)
+position = Vector2(969, 284)
 
 [node name="Devil" parent="TileMap" node_paths=PackedStringArray("end_point") instance=ExtResource("13_qi5xp")]
+z_index = 1
 position = Vector2(783, 291)
 end_point = NodePath("Marker2D")
 
@@ -559,7 +561,12 @@ end_point = NodePath("Marker2D")
 position = Vector2(56, 69)
 
 [node name="Yaga" parent="TileMap" instance=ExtResource("15_r3knq")]
-position = Vector2(503, 506)
+z_index = 1
+position = Vector2(607, 307)
+
+[node name="Daria" parent="TileMap" instance=ExtResource("16_ojui1")]
+z_index = 1
+position = Vector2(670, 243)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

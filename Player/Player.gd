@@ -37,6 +37,7 @@ func attack():
 	await  animation_player.animation_finished
 	$AreaAttack/CollisionShapeAttack.disabled = true
 	is_attacking = false
+	animation_player.stop()
 	
 func update_animation():
 	if is_attacking: return

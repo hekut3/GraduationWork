@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xsumpwyke0u5"
-path="res://.godot/imported/Dasha.png-82e75d5fbd73010b3f5003f85de6ef6b.ctex"
+path="res://.godot/imported/Daria.png-a442bc79e90f09de31c7c29c493c8d75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/Dasha.png"
-dest_files=["res://.godot/imported/Dasha.png-82e75d5fbd73010b3f5003f85de6ef6b.ctex"]
+source_file="res://Sprites/Characters/Daria.png"
+dest_files=["res://.godot/imported/Daria.png-a442bc79e90f09de31c7c29c493c8d75.ctex"]
 
 [params]
 
