@@ -20,10 +20,12 @@ func take_item():
 	
 	inventory.remove_slot(item_stack_gui.inventory_slot)
 	
-	container.remove_child(item_stack_gui)
-	item_stack_gui = null
-	
 	return item
 
 func is_empty():
 	return !item_stack_gui
+
+func clear() -> void:
+	if item_stack_gui:
+		container.remove_child(item_stack_gui)
+		item_stack_gui = null

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b4dmvb85u61l6"]
+[gd_resource type="Resource" script_class="HealtItem" load_steps=3 format=3 uid="uid://b4dmvb85u61l6"]
 
-[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_qk7os"]
+[ext_resource type="Script" path="res://Inventory/Items/health_item.gd" id="1_tn042"]
 [ext_resource type="Texture2D" uid="uid://u54dsw5kn1g2" path="res://Sprites/Collectables/Openok.png" id="2_4ex74"]
 
 [resource]
-script = ExtResource("1_qk7os")
+script = ExtResource("1_tn042")
+health_increase = 1
 name = "Openok"
 texture = ExtResource("2_4ex74")

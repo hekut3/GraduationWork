@@ -30,7 +30,9 @@ func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
 		var inventory_slot: InventorySlot = inventory.slots[i]
 		
-		if !inventory_slot.item: continue
+		if !inventory_slot.item:
+			slots[i].clear()
+			continue
 		
 		var item_stack_gui: ItemStackGui = slots[i].item_stack_gui
 		if !item_stack_gui:

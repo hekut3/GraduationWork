@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 signal  health_changed
 signal fly_agaric_collected
 
@@ -21,6 +23,7 @@ var last_anim_direction: String = "_down"
 var is_attacking: bool = false
 
 func _ready():
+	inventory.use.connect(use_item)
 	effects.play("RESET")
 
 func handle_input():
@@ -103,3 +106,12 @@ func take_damage(amount):
 	effects.play("RESET")
 	#if  current_health <= 0:
 		#queue_free()
+
+func increase_health(amount: int) -> void:
+	current_health += amount
+	current_health = min(max_health, current_health)
+	
+	health_changed.emit(current_health)
+
+func use_item(item: InventoryItem) -> void:
+	item.use(self)

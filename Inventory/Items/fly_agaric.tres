@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bdxd01hpy3qm1"]
+[gd_resource type="Resource" script_class="HealtItem" load_steps=3 format=3 uid="uid://bdxd01hpy3qm1"]
 
-[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_btfih"]
+[ext_resource type="Script" path="res://Inventory/Items/health_item.gd" id="1_71725"]
 [ext_resource type="Texture2D" uid="uid://dqef0tewkn3bl" path="res://Sprites/Collectables/Fly_agaric.png" id="2_c6luv"]
 
 [resource]
-script = ExtResource("1_btfih")
+script = ExtResource("1_71725")
+health_increase = -1
 name = "Fly_agaric"
 texture = ExtResource("2_c6luv")
