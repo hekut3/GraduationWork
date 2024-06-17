@@ -5,7 +5,7 @@ class_name Player
 signal  health_changed
 signal fly_agaric_collected
 
-var speed = 60 # Скорость передвижения персонажа
+var speed = 60
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_timer = $HurtTimer
 @onready var hurt_box = $HurtBox
@@ -92,7 +92,7 @@ func _on_hurt_box_area_exited(_area):
 	pass
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Wolf") or body.is_in_group("Devil"):
+	if body.is_in_group("Enemy"):
 		body.take_damage(1)
 
 func take_damage(amount):

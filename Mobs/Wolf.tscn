@@ -1509,7 +1509,7 @@ radius = 118.207
 radius = 3.0
 height = 10.0
 
-[node name="Wolf" type="CharacterBody2D" groups=["Wolf"]]
+[node name="Wolf" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 2

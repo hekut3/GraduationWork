@@ -3,7 +3,7 @@ extends Node
 @onready var pause_menu = $"../CanvasLayer/PauseMenu"
 @onready var player = $"../TileMap/Player"
 @onready var hearts_container = $"../CanvasLayer/heartsContainer"
-
+@onready var yaga = $"../TileMap/Yaga"
 
 var game_paused: bool = false
 

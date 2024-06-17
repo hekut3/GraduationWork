@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b86y13yib52dr"]
+[gd_scene load_steps=32 format=3 uid="uid://b86y13yib52dr"]
 
 [ext_resource type="Script" path="res://Map/map.gd" id="1_d11re"]
 [ext_resource type="Texture2D" uid="uid://b27qxt0dj3qfx" path="res://Sprites/Tile_map/Tile.png" id="1_o8j3k"]
@@ -19,8 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://dpv2bmssddvg8" path="res://Mobs/Devil.tscn" id="13_qi5xp"]
 [ext_resource type="PackedScene" uid="uid://n0m0w8hbstne" path="res://NPC/yaga.tscn" id="15_r3knq"]
 [ext_resource type="PackedScene" uid="uid://b512b7auw1vsx" path="res://NPC/daria.tscn" id="16_ojui1"]
+[ext_resource type="PackedScene" uid="uid://bby2sj7ci06a6" path="res://Mobs/Koschey.tscn" id="17_k14m3"]
+[ext_resource type="PackedScene" uid="uid://clxj3meojoens" path="res://Mobs/Hare.tscn" id="18_5d5si"]
 [ext_resource type="PackedScene" uid="uid://1alr7npi2ea4" path="res://Menu/pause_menu.tscn" id="18_67522"]
 [ext_resource type="PackedScene" uid="uid://dfgjjmlbajb48" path="res://Gui/hotbar.tscn" id="19_mhsxf"]
+[ext_resource type="PackedScene" uid="uid://b055knykc5m2q" path="res://Mobs/Duck.tscn" id="19_sxemy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo55l"]
 texture = ExtResource("1_o8j3k")
@@ -550,11 +553,11 @@ script = ExtResource("5_s3fub")
 tilemap = NodePath("../..")
 
 [node name="Wolf" parent="TileMap" instance=ExtResource("5_3le70")]
-position = Vector2(969, 284)
+position = Vector2(1123, 180)
 
 [node name="Devil" parent="TileMap" node_paths=PackedStringArray("end_point") instance=ExtResource("13_qi5xp")]
 z_index = 1
-position = Vector2(783, 291)
+position = Vector2(1121, 324)
 end_point = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/Devil"]
@@ -567,6 +570,18 @@ position = Vector2(607, 307)
 [node name="Daria" parent="TileMap" instance=ExtResource("16_ojui1")]
 z_index = 1
 position = Vector2(670, 243)
+
+[node name="Koschey" parent="TileMap" instance=ExtResource("17_k14m3")]
+z_index = 1
+position = Vector2(447, 567)
+
+[node name="Hare" parent="TileMap" instance=ExtResource("18_5d5si")]
+z_index = 1
+position = Vector2(888, 333)
+
+[node name="Duck" parent="TileMap" instance=ExtResource("19_sxemy")]
+z_index = 1
+position = Vector2(873, 395)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3

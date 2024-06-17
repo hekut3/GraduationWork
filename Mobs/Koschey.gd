@@ -1,0 +1,79 @@
+extends CharacterBody2D
+
+@export var speed = 40
+
+var chase = false
+var health = 2
+var is_attacking: bool = false
+var last_anim_direction: String = ""
+var damage_interval = 0.4
+var attack_timer: Timer
+
+@onready var player = $"../Player"
+@onready var animation_player = $AnimationPlayer
+
+func _ready():
+	attack_timer = Timer.new()
+	attack_timer.wait_time = damage_interval
+	attack_timer.one_shot = false
+	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	add_child(attack_timer)
+	
+func update_velocity():
+	if is_attacking:
+		velocity = Vector2.ZERO
+		return
+	var direction = (player.position - self.position)
+	if chase:
+		velocity = direction.normalized() * speed
+	else:
+		velocity = Vector2.ZERO
+		
+func update_animation():
+	if is_attacking:
+		animation_player.play("attack" + last_anim_direction)
+		return
+	if chase:
+		var direction = ""
+		if abs(velocity.x) > abs(velocity.y):
+			if velocity.x < 0: direction = "_left"
+			elif  velocity.x > 0: direction = "_right"
+		else:
+			if velocity.y < 0: direction = "_up"
+			elif velocity.y > 0: direction = "_down"
+		animation_player.play("walk" + direction)
+		last_anim_direction = direction
+	else:
+		animation_player.play("idle")
+		
+func _physics_process(_delta):
+	update_velocity()
+	move_and_slide()
+	update_animation()
+	
+func _on_attack_timer_timeout():
+	if is_attacking and player.is_in_group("Player"):
+		player.take_damage(1)
+
+func _on_area_attack_body_entered(body):
+	if body.is_in_group("Player"):
+		is_attacking = true
+		attack_timer.start()
+
+func _on_area_attack_body_exited(body):
+	if body.is_in_group("Player"):
+		is_attacking = false
+		attack_timer.stop()
+
+func _on_detector_body_entered(body):
+	if body.is_in_group("Player"):
+		chase = true
+
+func _on_detector_body_exited(body):
+	if body.is_in_group("Player"):
+		chase = false
+
+func take_damage(amount):
+	health -= amount
+	if  health <= 0:
+		queue_free()
