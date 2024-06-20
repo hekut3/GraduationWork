@@ -1,8 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://wanfc6uv5y03"]
+[gd_scene load_steps=24 format=3 uid="uid://wanfc6uv5y03"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_vv2ms"]
 [ext_resource type="Resource" uid="uid://ddkqju2i3o0y8" path="res://Inventory/playerInventory.tres" id="2_bfugw"]
 [ext_resource type="Texture2D" uid="uid://cdouj07x0m5nx" path="res://Sprites/Characters/Hero_movement.png" id="2_yj7q2"]
+[ext_resource type="AudioStream" uid="uid://da3x80rl3wntq" path="res://Audio/Sword.mp3" id="4_2q48p"]
+[ext_resource type="AudioStream" uid="uid://vts0a1g2tp2n" path="res://Audio/Pick Up.wav" id="5_0q0s0"]
+[ext_resource type="AudioStream" uid="uid://b3fvrwrlob4tn" path="res://Audio/Eating Food.mp3" id="6_ykmu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct0k"]
 size = Vector2(10, 3)
@@ -1128,6 +1131,21 @@ collision_mask = 3
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jotdg")
 disabled = true
+
+[node name="Sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2q48p")
+volume_db = -14.054
+pitch_scale = 1.07
+
+[node name="Pick Up Item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0q0s0")
+volume_db = -8.432
+pitch_scale = 1.14
+
+[node name="Use Item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ykmu3")
+volume_db = -8.432
+pitch_scale = 1.07
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]

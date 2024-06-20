@@ -11,6 +11,9 @@ signal fly_agaric_collected
 @onready var effects = $Effects
 @onready var current_health: int = max_health
 @onready var needle_node = $"../Needle"
+@onready var sword = $Sword
+@onready var pickUp = $"Pick Up Item"
+@onready var useItem = $"Use Item"
 
 @export var max_health: int = 3
 @export var knockback_power: int = 400
@@ -36,6 +39,7 @@ func attack():
 	is_attacking = true
 	animation_player.play("Attack" + last_anim_direction)
 	$AreaAttack/CollisionShapeAttack.disabled = false
+	sword.play()
 	await  animation_player.animation_finished
 	$AreaAttack/CollisionShapeAttack.disabled = true
 	is_attacking = false
@@ -80,6 +84,7 @@ func hurt_by_enemy(area):
 
 func _on_hurt_box_area_entered(area):
 	if area.has_method("collect"):
+		pickUp.play()
 		area.collect(inventory)
 
 func knockback(enemyVelocity: Vector2):
@@ -118,4 +123,5 @@ func increase_health(amount: int) -> void:
 	health_changed.emit(current_health)
 
 func use_item(item: InventoryItem) -> void:
+	useItem.play()
 	item.use(self)

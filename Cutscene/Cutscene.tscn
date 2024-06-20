@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhfoic8g6yilw"]
+[gd_scene load_steps=15 format=3 uid="uid://dhfoic8g6yilw"]
 
 [ext_resource type="Texture2D" uid="uid://cmm1pe67v7ky7" path="res://Sprites/Cutscene/Water.png" id="1_6ued7"]
 [ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_mdpmx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1v7jlci6imds" path="res://Sprites/Cutscene/Vasilisa.png" id="7_iur65"]
 [ext_resource type="Texture2D" uid="uid://ibh08ikbu66m" path="res://Sprites/Cutscene/No_magic.png" id="8_sbasw"]
 [ext_resource type="Texture2D" uid="uid://6qavq543clpx" path="res://Sprites/Cutscene/End_cutscene.png" id="10_oma88"]
+[ext_resource type="AudioStream" uid="uid://cauk1qq70l8xa" path="res://Audio/Cutscene.mp3" id="11_vyci7"]
 
 [sub_resource type="Animation" id="Animation_q1ac6"]
 resource_name = "Clouds"
@@ -288,3 +289,8 @@ position = Vector2(960, 540)
 texture = ExtResource("10_oma88")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Cutscene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vyci7")
+volume_db = -5.622
+pitch_scale = 1.11
