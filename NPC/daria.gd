@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@export var first_dialogue: bool = true
+
 @onready var animation_sprite = $AnimatedSprite2D
 @onready var dialogue_node = $Dialogue
+@onready var yaga_node = $"../Yaga"
 
 var is_chatting = false
 var player_in_chat_zone = false
@@ -9,7 +12,15 @@ var player_in_chat_zone = false
 func _process(_delta):
 	animation_sprite.play("Idle")
 	if Input.is_action_just_pressed("interaction") and player_in_chat_zone and not is_chatting:
-		start_chat("Daria", 1)
+		if first_dialogue:
+			first_dialogue = false
+			start_chat("Daria", 1)
+		elif yaga_node.second_dialogue:
+			start_chat("Daria", 2)
+		else:
+			var dialogues = [2, 3, 4, 5, 6, 7]
+			var random_dialogue = dialogues[int(randf() * dialogues.size())]
+			start_chat("Daria", random_dialogue)
 		
 func start_chat(npc_name, dialogue_id):
 	dialogue_node.start(npc_name, dialogue_id)

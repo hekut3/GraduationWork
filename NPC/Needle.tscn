@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyfgvxekkgnl2"]
 
-[ext_resource type="Script" path="res://Needle.gd" id="1_1efkk"]
+[ext_resource type="Script" path="res://NPC/Needle.gd" id="1_1efkk"]
 [ext_resource type="Texture2D" uid="uid://oj3ahq1naknm" path="res://Sprites/Tile_map/Needle.png" id="2_obf7n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgh8q"]

@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@export var first_dialogue: bool = true
+@export var second_dialogue: bool = true
+@export var third_dialogue: bool = true
+
+@onready var needle_node = $"../Needle"
 @onready var animation_sprite = $AnimatedSprite2D
 @onready var dialogue_node = $Dialogue
 @onready var timer = $Timer
@@ -13,7 +18,21 @@ func _ready():
 func _process(_delta):
 	animation_sprite.play("Idle")
 	if Input.is_action_just_pressed("interaction") and player_in_chat_zone and not is_chatting:
-		start_chat("Yaga", 1)
+		if first_dialogue:
+			first_dialogue = false
+			start_chat("Yaga", 1)
+		elif second_dialogue:
+			second_dialogue = false
+			start_chat("Yaga", 2)
+		elif third_dialogue:
+			third_dialogue = false
+			start_chat("Yaga", 3)
+		elif needle_node.needle_is_broken:
+			start_chat("Yaga", 4)
+		else:
+			var dialogues = [5, 6, 7, 8]
+			var random_dialogue = dialogues[int(randf() * dialogues.size())]
+			start_chat("Yaga", random_dialogue)
 
 func start_chat(npc_name, dialogue_id):
 	dialogue_node.start(npc_name, dialogue_id)
