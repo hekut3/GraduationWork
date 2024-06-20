@@ -1,16 +1,17 @@
 extends CharacterBody2D
 
-@export var speed = 40
+@export var speed: int = 40
 
-var chase = false
-var health = 2
+var chase: bool = false
+var health: int = 2
 var is_attacking: bool = false
 var last_anim_direction: String = ""
-var damage_interval = 0.7
+var damage_interval: float = 0.7
 var attack_timer: Timer
 
 @onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
+@onready var nav_agent = $NavigationAgent2D
 
 func _ready():
 	attack_timer = Timer.new()
@@ -19,6 +20,9 @@ func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
 
+func make_path():
+	nav_agent.target_position = player.global_position
+
 func update_velocity():
 	if is_attacking:
 		velocity = Vector2.ZERO
@@ -26,8 +30,6 @@ func update_velocity():
 	var direction = (player.position - self.position)
 	if chase:
 		velocity = direction.normalized() * speed
-	else:
-		velocity = Vector2.ZERO
 
 func update_animation():
 	if is_attacking:
@@ -45,9 +47,11 @@ func update_animation():
 		last_anim_direction = direction
 	else:
 		if velocity.x < 0: animation_player.play("idle_left")
-		else: animation_player.play("idle_right")
+		elif velocity.x > 0: animation_player.play("idle_right")
+		velocity = Vector2.ZERO
 
 func _physics_process(_delta):
+	make_path()
 	update_velocity()
 	move_and_slide()
 	update_animation()

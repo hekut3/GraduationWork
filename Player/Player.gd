@@ -5,19 +5,18 @@ class_name Player
 signal  health_changed
 signal fly_agaric_collected
 
-var speed = 60
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_timer = $HurtTimer
 @onready var hurt_box = $HurtBox
 @onready var effects = $Effects
-
-@export var max_health = 3
 @onready var current_health: int = max_health
+@onready var needle_node = $"../Needle"
 
+@export var max_health: int = 3
 @export var knockback_power: int = 400
-
 @export var inventory: Inventory
 
+var speed: int = 60
 var is_hurt: bool = false
 var last_anim_direction: String = "_down"
 var is_attacking: bool = false
@@ -34,9 +33,9 @@ func handle_input():
 		attack()
 		
 func attack():
-	$AreaAttack/CollisionShapeAttack.disabled = false
 	is_attacking = true
 	animation_player.play("Attack" + last_anim_direction)
+	$AreaAttack/CollisionShapeAttack.disabled = false
 	await  animation_player.animation_finished
 	$AreaAttack/CollisionShapeAttack.disabled = true
 	is_attacking = false
@@ -94,6 +93,11 @@ func _on_hurt_box_area_exited(_area):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.take_damage(1)
+	
+	if body.is_in_group("Boss"):
+		if needle_node.needle_is_broken:
+			body.take_damage(1)
+		else: body.take_damage(0)
 
 func take_damage(amount):
 	current_health -= amount

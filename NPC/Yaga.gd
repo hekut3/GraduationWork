@@ -12,7 +12,7 @@ func _ready():
 	
 func _process(_delta):
 	animation_sprite.play("Idle")
-	if Input.is_action_just_pressed("chat") and player_in_chat_zone and not is_chatting:
+	if Input.is_action_just_pressed("interaction") and player_in_chat_zone and not is_chatting:
 		start_chat("Yaga", 1)
 
 func start_chat(npc_name, dialogue_id):

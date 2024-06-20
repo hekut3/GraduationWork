@@ -927,7 +927,9 @@ height = 16.0
 
 [node name="Devil" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_k8m5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -966,6 +968,8 @@ collision_mask = 3
 position = Vector2(0, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6e3k7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

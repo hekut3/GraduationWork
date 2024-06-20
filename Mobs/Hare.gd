@@ -1,20 +1,26 @@
 extends CharacterBody2D
 
-@export var speed = 30
+@export var speed: int = 50
 
-var chase_by_player = false
-var health = 1
+var chase_by_player: bool = false
+var health: int = 1
 var last_anim_direction: String = ""
 
 @onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
+@onready var duck = $"../Duck"
+@onready var timer = Timer.new()
+
+func _ready():
+	add_child(timer)
+	timer.one_shot = true
+	timer.wait_time = 0.6
+	timer.timeout.connect(_on_timeout)
 
 func update_velocity():
 	if chase_by_player:
 		var direction = (self.position - player.position).normalized()
 		velocity = direction * speed
-	else:
-		velocity = Vector2.ZERO
 		
 func update_animation():
 	if chase_by_player:
@@ -27,7 +33,11 @@ func update_animation():
 			elif velocity.y > 0: direction = "_down"
 		animation_player.play("run" + direction)
 		last_anim_direction = direction
-		
+	else:
+		if velocity.x < 0: animation_player.play("idle_left")
+		elif velocity.x > 0: animation_player.play("idle_right")
+		velocity = Vector2.ZERO	
+	
 func _physics_process(_delta):
 	update_velocity()
 	move_and_slide()
@@ -44,4 +54,12 @@ func _on_detector_body_exited(body):
 func take_damage(amount):
 	health -= amount
 	if  health <= 0:
-		queue_free()
+		chase_by_player = false
+		velocity = Vector2.ZERO
+		animation_player.play("disappearing")
+		timer.start()
+
+func _on_timeout():
+	queue_free()
+	if is_instance_valid(duck):
+		duck.position = self.position

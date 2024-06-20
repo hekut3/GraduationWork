@@ -1,18 +1,19 @@
 extends CharacterBody2D
 
-@export var speed = 40
-@export var limit = 0.5
+@export var speed: int = 40
+@export var limit: float = 0.5
 @export var end_point: Marker2D
 
-var chase = false
-var health = 3
+var chase: bool = false
+var health: int = 3
 var is_attacking: bool = false
 var last_anim_direction: String = ""
-var damage_interval = 0.5
+var damage_interval: float = 0.5
 var attack_timer: Timer
 
 @onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
+@onready var nav_agent = $NavigationAgent2D
 
 var start_position
 var end_position
@@ -26,6 +27,9 @@ func _ready():
 	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
+
+func make_path():
+	nav_agent.target_position = player.global_position
 
 func change_direction():
 	var temp_end = end_position
@@ -65,6 +69,7 @@ func update_animation():
 		last_anim_direction = direction
 
 func _physics_process(_delta):
+	make_path()
 	update_velocity()
 	move_and_slide()
 	update_animation()
@@ -95,3 +100,4 @@ func _on_area_2d_body_exited(body):
 func _on_attack_timer_timeout():
 	if is_attacking and player.is_in_group("Player"):
 		player.take_damage(1)
+

@@ -6,7 +6,7 @@ func _ready():
 	
 	var timer = get_node("Timer")
 	timer.timeout.connect(_on_timer_timeout)
-	timer.start(5)
+	timer.start(40)
 	
 func _on_timer_timeout():
 	get_tree().change_scene_to_file("res://Map/map.tscn")
