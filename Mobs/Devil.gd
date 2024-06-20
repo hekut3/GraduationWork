@@ -29,7 +29,10 @@ func _ready():
 	add_child(attack_timer)
 
 func make_path():
-	nav_agent.target_position = player.global_position
+	if chase:
+		nav_agent.target_position = player.global_position
+	else:
+		nav_agent.target_position = end_position
 
 func change_direction():
 	var temp_end = end_position
@@ -40,11 +43,12 @@ func update_velocity():
 	if is_attacking:
 		velocity = Vector2.ZERO
 		return
-	var move_direction = (end_position - position)
+		
 	if chase:
-		move_direction = (player.position - self.position).normalized()
+		var move_direction = (player.position - self.position).normalized()
 		velocity = move_direction * speed
 	else:
+		var move_direction = (end_position - position)
 		if move_direction.length() < limit:
 			change_direction()
 		velocity = move_direction.normalized() * speed
@@ -100,4 +104,3 @@ func _on_area_2d_body_exited(body):
 func _on_attack_timer_timeout():
 	if is_attacking and player.is_in_group("Player"):
 		player.take_damage(1)
-

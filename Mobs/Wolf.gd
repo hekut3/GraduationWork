@@ -19,6 +19,8 @@ func _ready():
 	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
+	
+	animation_player.animation_finished.connect(_on_death_animation_finished)
 
 func make_path():
 	nav_agent.target_position = player.global_position
@@ -66,9 +68,12 @@ func _on_detector_body_exited(body):
 
 func take_damage(amount):
 	health -= amount
+	print(health)
 	if  health <= 0:
-		queue_free()
-
+		chase = false
+		is_attacking = false
+		animation_player.play("death_left")
+	
 func _on_area_attack_body_entered(body):
 	if body.is_in_group("Player"):
 		is_attacking = true
@@ -82,4 +87,7 @@ func _on_area_attack_body_exited(body):
 func _on_attack_timer_timeout():
 	if is_attacking and player.is_in_group("Player"):
 		player.take_damage(1)
-		
+
+func _on_death_animation_finished(anim_name: String):
+	if anim_name == "death_left":
+		queue_free()

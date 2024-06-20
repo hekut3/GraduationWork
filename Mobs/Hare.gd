@@ -9,13 +9,9 @@ var last_anim_direction: String = ""
 @onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
 @onready var duck = $"../Duck"
-@onready var timer = Timer.new()
 
 func _ready():
-	add_child(timer)
-	timer.one_shot = true
-	timer.wait_time = 0.6
-	timer.timeout.connect(_on_timeout)
+	animation_player.animation_finished.connect(_on_animation_finished)
 
 func update_velocity():
 	if chase_by_player:
@@ -57,9 +53,9 @@ func take_damage(amount):
 		chase_by_player = false
 		velocity = Vector2.ZERO
 		animation_player.play("disappearing")
-		timer.start()
 
-func _on_timeout():
-	queue_free()
-	if is_instance_valid(duck):
-		duck.position = self.position
+func _on_animation_finished(anim_name: String):
+	if anim_name == "disappearing":
+		queue_free()
+		if is_instance_valid(duck):
+			duck.position = self.position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpv2bmssddvg8"]
+[gd_scene load_steps=18 format=3 uid="uid://dpv2bmssddvg8"]
 
 [ext_resource type="Script" path="res://Mobs/Devil.gd" id="1_k8m5e"]
 [ext_resource type="Texture2D" uid="uid://dr8ammdsj3ohm" path="res://Sprites/Characters/Vlad.png" id="1_xqd15"]
@@ -901,6 +901,22 @@ tracks/6/keys = {
 "values": [Vector2(0, -11)]
 }
 
+[sub_resource type="Animation" id="Animation_hwy1v"]
+resource_name = "disappearing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2i8nl"]
 _data = {
 "RESET": SubResource("Animation_at3g1"),
@@ -908,6 +924,7 @@ _data = {
 "attack_left": SubResource("Animation_4qr4c"),
 "attack_right": SubResource("Animation_e62ya"),
 "attack_up": SubResource("Animation_txat5"),
+"disappearing": SubResource("Animation_hwy1v"),
 "walk_down": SubResource("Animation_whnbu"),
 "walk_left": SubResource("Animation_1hayp"),
 "walk_right": SubResource("Animation_gee5v"),

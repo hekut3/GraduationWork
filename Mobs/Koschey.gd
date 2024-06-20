@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 40
 
 var chase: bool = false
-var health: int = 15
+var health: int = 1
 var is_attacking: bool = false
 var last_anim_direction: String = ""
 var damage_interval: float = 0.4
@@ -20,6 +20,8 @@ func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
 	
+	animation_player.animation_finished.connect(_on_animation_finished)
+	
 func make_path():
 	nav_agent.target_position = player.global_position	
 
@@ -30,7 +32,9 @@ func update_velocity():
 	var direction = (player.position - self.position)
 	if chase:
 		velocity = direction.normalized() * speed
-		
+	else:
+		velocity = Vector2.ZERO	
+	
 func update_animation():
 	if is_attacking:
 		animation_player.play("attack" + last_anim_direction)
@@ -45,9 +49,6 @@ func update_animation():
 			elif velocity.y > 0: direction = "_down"
 		animation_player.play("walk" + direction)
 		last_anim_direction = direction
-	else:
-		animation_player.play("idle")
-		velocity = Vector2.ZERO
 		
 func _physics_process(_delta):
 	make_path()
@@ -80,4 +81,10 @@ func _on_detector_body_exited(body):
 func take_damage(amount):
 	health -= amount
 	if  health <= 0:
+		chase = false
+		velocity = Vector2.ZERO
+		animation_player.play("disappearing")
+
+func _on_animation_finished(anim_name: String):
+	if anim_name == "disappearing":
 		queue_free()
