@@ -15,7 +15,7 @@ signal fly_agaric_collected
 @onready var pickUp = $"Pick Up Item"
 @onready var useItem = $"Use Item"
 
-@export var max_health: int = 3
+@export var max_health: int = 5
 @export var knockback_power: int = 400
 @export var inventory: Inventory
 
@@ -67,11 +67,11 @@ func _physics_process(_delta):
 		for area in hurt_box.get_overlapping_areas():
 			if area.name == "HitBox":
 				hurt_by_enemy(area)
+	if current_health <= 0:
+		get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
 func hurt_by_enemy(area):
 	current_health -= 1
-	if current_health < 0:
-		current_health = max_health
 		
 	health_changed.emit(current_health)
 	is_hurt = true
@@ -106,15 +106,11 @@ func _on_area_2d_body_entered(body):
 
 func take_damage(amount):
 	current_health -= amount
-	if current_health < 0:
-		current_health = max_health
 	health_changed.emit(current_health)
 	effects.play("hurtBlink")
 	hurt_timer.start()
 	await hurt_timer.timeout
 	effects.play("RESET")
-	#if  current_health <= 0:
-		#queue_free()
 
 func increase_health(amount: int) -> void:
 	current_health += amount

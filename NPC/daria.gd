@@ -15,10 +15,10 @@ func _process(_delta):
 		if first_dialogue:
 			first_dialogue = false
 			start_chat("Daria", 1)
-		elif yaga_node.second_dialogue:
+		elif !yaga_node.second_dialogue:
 			start_chat("Daria", 2)
 		else:
-			var dialogues = [2, 3, 4, 5, 6, 7]
+			var dialogues = [3, 4, 5, 6, 7]
 			var random_dialogue = dialogues[int(randf() * dialogues.size())]
 			start_chat("Daria", random_dialogue)
 		

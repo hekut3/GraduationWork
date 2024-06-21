@@ -4,6 +4,8 @@ extends Node2D
 @onready var player = $TileMap/Player
 @onready var mainTheme = $"Main Theme"
 
+
+
 func _ready():
 	hearts_container.set_max_hearts(player.max_health)
 	hearts_container.update_hearts(player.current_health)

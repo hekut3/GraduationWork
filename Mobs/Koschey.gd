@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 40
 
 var chase: bool = false
-var health: int = 1
+var health: int = 7
 var is_attacking: bool = false
 var last_anim_direction: String = ""
 var damage_interval: float = 0.4
@@ -83,6 +83,7 @@ func take_damage(amount):
 	if  health <= 0:
 		chase = false
 		velocity = Vector2.ZERO
+		is_attacking = false
 		animation_player.play("disappearing")
 
 func _on_animation_finished(anim_name: String):
