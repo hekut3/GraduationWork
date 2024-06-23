@@ -6,14 +6,15 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inwfd"]
 resource_local_to_scene = true
-size = Vector2(8, 7)
+size = Vector2(4, 7)
 
 [node name="Openok" instance=ExtResource("1_288ty")]
 itemRes = ExtResource("2_1e7fi")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 0.5)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_inwfd")
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -4)
 texture = ExtResource("2_escqi")

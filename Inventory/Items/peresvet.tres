@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TeleportItem" load_steps=3 format=3 uid="uid://cdwv0h1nqf07d"]
+
+[ext_resource type="Script" path="res://Inventory/Items/teleporting_item.gd" id="1_vr8ae"]
+[ext_resource type="Texture2D" uid="uid://cckpjrmcrs1ru" path="res://Sprites/Collectables/Peresvet.png" id="2_mq0uu"]
+
+[resource]
+script = ExtResource("1_vr8ae")
+name = "Peresvet"
+texture = ExtResource("2_mq0uu")

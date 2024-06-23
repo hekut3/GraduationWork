@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://clh2sdeaqqkxk"]
+
+[ext_resource type="PackedScene" uid="uid://dgnxk56tca5ss" path="res://Collectables/collectable.tscn" id="1_kppc7"]
+[ext_resource type="Texture2D" uid="uid://cckpjrmcrs1ru" path="res://Sprites/Collectables/Peresvet.png" id="2_oo20e"]
+[ext_resource type="Resource" uid="uid://cdwv0h1nqf07d" path="res://Inventory/Items/peresvet.tres" id="2_q8bmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua5x1"]
+resource_local_to_scene = true
+size = Vector2(4, 7)
+
+[node name="Peresvet" instance=ExtResource("1_kppc7")]
+itemRes = ExtResource("2_q8bmr")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_ua5x1")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -5)
+texture = ExtResource("2_oo20e")
