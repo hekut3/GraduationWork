@@ -1,0 +1,150 @@
+[gd_scene load_steps=22 format=3 uid="uid://wkp7ayy7hih1"]
+
+[ext_resource type="Script" path="res://NPC/Margarita.gd" id="1_r2yc2"]
+[ext_resource type="Texture2D" uid="uid://4km1vx6c46xk" path="res://Sprites/Characters/Margarita.png" id="1_sc2gf"]
+[ext_resource type="PackedScene" uid="uid://bil3yh8nxalg2" path="res://NPC/dialogue.tscn" id="2_rb11x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm6i3"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dses"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt626"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43ujo"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au23f"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6lld"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chrt7"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8bah"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cme81"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0cd1"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0xev"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_057xi"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atxnh"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3iri"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifj81"]
+atlas = ExtResource("1_sc2gf")
+region = Rect2(224, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8551q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm6i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dses")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt626")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43ujo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au23f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6lld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chrt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8bah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cme81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0cd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0xev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_057xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atxnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3iri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifj81")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvyaw"]
+size = Vector2(8, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqdum"]
+radius = 40.0
+
+[node name="Margarita" type="CharacterBody2D"]
+script = ExtResource("1_r2yc2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_8551q")
+animation = &"Idle"
+frame = 3
+frame_progress = 0.194725
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_mvyaw")
+
+[node name="ChatDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetectionArea"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_gqdum")
+
+[node name="Dialogue" parent="." instance=ExtResource("2_rb11x")]
+
+[connection signal="body_entered" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]
