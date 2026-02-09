@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpv2bmssddvg8"]
+[gd_scene format=3 uid="uid://dpv2bmssddvg8"]
 
-[ext_resource type="Script" path="res://Mobs/Devil.gd" id="1_k8m5e"]
+[ext_resource type="Script" uid="uid://21pshht8qvqe" path="res://Mobs/Devil.gd" id="1_k8m5e"]
 [ext_resource type="Texture2D" uid="uid://dr8ammdsj3ohm" path="res://Sprites/Characters/Vlad.png" id="1_xqd15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prbgx"]
@@ -505,6 +505,22 @@ tracks/7/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hwy1v"]
+resource_name = "disappearing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8)]
+}
+
 [sub_resource type="Animation" id="Animation_whnbu"]
 resource_name = "walk_down"
 length = 0.75
@@ -901,34 +917,18 @@ tracks/6/keys = {
 "values": [Vector2(0, -11)]
 }
 
-[sub_resource type="Animation" id="Animation_hwy1v"]
-resource_name = "disappearing"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8), Vector2i(5, 8)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2i8nl"]
 _data = {
-"RESET": SubResource("Animation_at3g1"),
-"attack_down": SubResource("Animation_a0xgk"),
-"attack_left": SubResource("Animation_4qr4c"),
-"attack_right": SubResource("Animation_e62ya"),
-"attack_up": SubResource("Animation_txat5"),
-"disappearing": SubResource("Animation_hwy1v"),
-"walk_down": SubResource("Animation_whnbu"),
-"walk_left": SubResource("Animation_1hayp"),
-"walk_right": SubResource("Animation_gee5v"),
-"walk_up": SubResource("Animation_ptkj1")
+&"RESET": SubResource("Animation_at3g1"),
+&"attack_down": SubResource("Animation_a0xgk"),
+&"attack_left": SubResource("Animation_4qr4c"),
+&"attack_right": SubResource("Animation_e62ya"),
+&"attack_up": SubResource("Animation_txat5"),
+&"disappearing": SubResource("Animation_hwy1v"),
+&"walk_down": SubResource("Animation_whnbu"),
+&"walk_left": SubResource("Animation_1hayp"),
+&"walk_right": SubResource("Animation_gee5v"),
+&"walk_up": SubResource("Animation_ptkj1")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qu533"]
@@ -942,51 +942,49 @@ radius = 82.0061
 radius = 3.0
 height = 16.0
 
-[node name="Devil" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Devil" type="CharacterBody2D" unique_id=331591334 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_k8m5e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1071395200]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_prbgx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1843787160]
 position = Vector2(0, -14)
 texture = ExtResource("1_xqd15")
 hframes = 10
 vframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_2i8nl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=387599865]
+libraries/ = SubResource("AnimationLibrary_2i8nl")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=464217885]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=373763191]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_qu533")
 
-[node name="Detector" type="Area2D" parent="."]
+[node name="Detector" type="Area2D" parent="." unique_id=646680129]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=1119830535]
 shape = SubResource("CircleShape2D_2wxou")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=632988018]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=993965997]
 position = Vector2(0, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6e3k7")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1727894724]
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

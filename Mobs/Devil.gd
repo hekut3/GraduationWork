@@ -1,106 +1,124 @@
 extends CharacterBody2D
 
 @export var speed: int = 40
-@export var limit: float = 0.5
-@export var end_point: Marker2D
+@export var patrol_distance: float = 100.0
+@export var limit: float = 2.0
 
-var chase: bool = false
+var chase_by_player: bool = false
 var health: int = 3
 var is_attacking: bool = false
 var last_anim_direction: String = ""
+var is_dead: bool = false
+
 var damage_interval: float = 0.5
 var attack_timer: Timer
 
 @onready var player = $"../Player"
 @onready var animation_player = $AnimationPlayer
-@onready var nav_agent = $NavigationAgent2D
 
-var start_position
-var end_position
+var start_position: Vector2
+var direction: int = 1 # 1 — вправо, -1 — влево
+
 
 func _ready():
-	start_position = position
-	end_position = end_point.global_position
-	
+	start_position = global_position
+
 	attack_timer = Timer.new()
 	attack_timer.wait_time = damage_interval
 	attack_timer.one_shot = false
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	add_child(attack_timer)
 
-func make_path():
-	if chase:
-		nav_agent.target_position = player.global_position
-	else:
-		nav_agent.target_position = end_position
-
-func change_direction():
-	var temp_end = end_position
-	end_position = start_position
-	start_position = temp_end
+	animation_player.animation_finished.connect(_on_animation_finished)
 
 func update_velocity():
 	if is_attacking:
 		velocity = Vector2.ZERO
 		return
-		
-	if chase:
-		var move_direction = (player.position - self.position).normalized()
+
+	if chase_by_player:
+		var move_direction = (player.global_position - global_position).normalized()
 		velocity = move_direction * speed
 	else:
-		var move_direction = (end_position - position)
-		if move_direction.length() < limit:
-			change_direction()
-		velocity = move_direction.normalized() * speed
+		# Патруль влево-вправо
+		var target_x = start_position.x + patrol_distance * direction
+
+		if abs(global_position.x - target_x) < limit:
+			direction *= -1
+
+		velocity = Vector2(direction * speed, 0)
+
 
 func update_animation():
 	if is_attacking:
 		animation_player.play("attack" + last_anim_direction)
 		return
-	
+
 	if velocity.length() == 0:
-		if animation_player.is_playing():
-			animation_player.stop()
-	else:
-		var direction = ""
-		if abs(velocity.x) > abs(velocity.y):
-			if velocity.x < 0: direction = "_left"
-			elif  velocity.x > 0: direction = "_right"
-		else:
-			if velocity.y < 0: direction = "_up"
-			elif velocity.y > 0: direction = "_down"
-		animation_player.play("walk" + direction)
-		last_anim_direction = direction
+		animation_player.stop()
+		return
+
+	var anim_dir := ""
+
+	if velocity.x < 0:
+		anim_dir = "_left"
+	elif velocity.x > 0:
+		anim_dir = "_right"
+
+	animation_player.play("walk" + anim_dir)
+	last_anim_direction = anim_dir
+
 
 func _physics_process(_delta):
-	make_path()
+	if is_dead:
+		return
+
 	update_velocity()
 	move_and_slide()
 	update_animation()
 
+
 func _on_detector_body_entered(body):
 	if body.is_in_group("Player"):
-		chase = true
+		chase_by_player = true
+
 
 func _on_detector_body_exited(body):
 	if body.is_in_group("Player"):
-		chase = false
+		chase_by_player = false
 
 func take_damage(amount):
+	if is_dead:
+		return
+
 	health -= amount
-	if  health <= 0:
-		queue_free()
+	print(health)
+
+	if health <= 0:
+		is_dead = true
+		chase_by_player = false
+		is_attacking = false
+		velocity = Vector2.ZERO
+		attack_timer.stop()
+
+		animation_player.play("disappearing")
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		is_attacking = true
 		attack_timer.start()
 
+
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		is_attacking = false
 		attack_timer.stop()
-		
+
+
 func _on_attack_timer_timeout():
-	if is_attacking and player.is_in_group("Player"):
+	if is_attacking:
 		player.take_damage(1)
+
+func _on_animation_finished(anim_name: String):
+	if anim_name == "disappearing":
+		queue_free()
