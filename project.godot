@@ -90,6 +90,10 @@ move_selector_item={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 
+[navigation]
+
+2d/merge_rasterizer_cell_scale=0.001
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -3,7 +3,6 @@ extends CharacterBody2D
 class_name Player
 
 signal  health_changed
-signal fly_agaric_collected
 
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_timer = $HurtTimer
