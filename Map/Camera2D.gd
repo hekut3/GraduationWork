@@ -8,5 +8,3 @@ func _ready():
 	var world_size_in_pixels = map_rect.size * tile_size
 	limit_right = world_size_in_pixels.x
 	limit_bottom = world_size_in_pixels.y
-
-
