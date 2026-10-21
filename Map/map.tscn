@@ -562,7 +562,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), Packe
 outlines = Array[PackedVector2Array]([PackedVector2Array(4392, 3160, 292, 3105, 209, 16, 4424, 16)])
 parsed_geometry_type = 1
 parsed_collision_mask = 4278190081
-source_geometry_mode = 1
+source_geometry_mode = 2
 source_geometry_group_name = &"navmesh_source"
 cell_size = 4.0
 agent_radius = 4.0
@@ -616,7 +616,7 @@ position = Vector2(1324, 693)
 position = Vector2(3309, 298)
 
 [node name="Wolf4" parent="TileMap" unique_id=615745145 instance=ExtResource("5_3le70")]
-position = Vector2(2737, 528)
+position = Vector2(2676, 478)
 
 [node name="Wolf5" parent="TileMap" unique_id=1501801935 instance=ExtResource("5_3le70")]
 position = Vector2(3906, 612)
@@ -683,6 +683,7 @@ z_index = 1
 position = Vector2(3235, 2105)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1525039597 groups=["navmesh_source"]]
+visible = false
 position = Vector2(1, -45)
 navigation_polygon = SubResource("NavigationPolygon_sn0t7")
 

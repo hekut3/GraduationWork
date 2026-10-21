@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3buy74m2yo53"]
+[gd_scene format=3 uid="uid://c3buy74m2yo53"]
 
-[ext_resource type="Script" path="res://Mobs/Wolf.gd" id="1_fsoxv"]
+[ext_resource type="Script" uid="uid://di4v0uqr04v0m" path="res://Mobs/Wolf.gd" id="1_fsoxv"]
 [ext_resource type="Texture2D" uid="uid://bsjlrffb5l8ki" path="res://Sprites/Characters/wolf.png" id="1_oi2hq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkblq"]
@@ -1483,19 +1483,19 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e0kwj"]
 _data = {
-"RESET": SubResource("Animation_jdkms"),
-"attack_down": SubResource("Animation_xd36c"),
-"attack_left": SubResource("Animation_om4fg"),
-"attack_right": SubResource("Animation_lkkub"),
-"attack_up": SubResource("Animation_6tsrd"),
-"death_left": SubResource("Animation_v5v78"),
-"death_right": SubResource("Animation_yamw2"),
-"idle_left": SubResource("Animation_15j6u"),
-"idle_right": SubResource("Animation_4g85o"),
-"run_down": SubResource("Animation_vs1vi"),
-"run_left": SubResource("Animation_4bj2b"),
-"run_right": SubResource("Animation_d3tsg"),
-"run_up": SubResource("Animation_sn4we")
+&"RESET": SubResource("Animation_jdkms"),
+&"attack_down": SubResource("Animation_xd36c"),
+&"attack_left": SubResource("Animation_om4fg"),
+&"attack_right": SubResource("Animation_lkkub"),
+&"attack_up": SubResource("Animation_6tsrd"),
+&"death_left": SubResource("Animation_v5v78"),
+&"death_right": SubResource("Animation_yamw2"),
+&"idle_left": SubResource("Animation_15j6u"),
+&"idle_right": SubResource("Animation_4g85o"),
+&"run_down": SubResource("Animation_vs1vi"),
+&"run_left": SubResource("Animation_4bj2b"),
+&"run_right": SubResource("Animation_d3tsg"),
+&"run_up": SubResource("Animation_sn4we")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nuxtd"]
@@ -1509,7 +1509,7 @@ radius = 118.207
 radius = 3.0
 height = 10.0
 
-[node name="Wolf" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Wolf" type="CharacterBody2D" unique_id=368498111 groups=["Enemy"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 3
@@ -1517,50 +1517,51 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_fsoxv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1120542468]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(0, -3.5)
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_tkblq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535081856]
 position = Vector2(0, -14)
 texture = ExtResource("1_oi2hq")
 hframes = 15
 vframes = 12
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_e0kwj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1031255356]
+libraries/ = SubResource("AnimationLibrary_e0kwj")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=1739882825]
 light_mask = 2
 visibility_layer = 2
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=220610628]
 position = Vector2(0, -10)
 rotation = 1.91986
 shape = SubResource("CapsuleShape2D_nuxtd")
 
-[node name="Detector" type="Area2D" parent="."]
+[node name="Detector" type="Area2D" parent="." unique_id=332769981]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=352145790]
 shape = SubResource("CircleShape2D_x6vjw")
 
-[node name="AreaAttack" type="Area2D" parent="."]
+[node name="AreaAttack" type="Area2D" parent="." unique_id=99157821]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack" unique_id=1604230171]
 position = Vector2(0, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kjxp1")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1242648106]
+
+[node name="LineOfSight" type="RayCast2D" parent="." unique_id=775963759]
+target_position = Vector2(120, 0)
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]

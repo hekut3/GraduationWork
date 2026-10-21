@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bby2sj7ci06a6"]
+[gd_scene format=3 uid="uid://bby2sj7ci06a6"]
 
 [ext_resource type="Texture2D" uid="uid://c6cs0de2p04ht" path="res://Sprites/Characters/Koschey.png" id="1_6xpat"]
-[ext_resource type="Script" path="res://Mobs/Koschey.gd" id="1_a1vr6"]
+[ext_resource type="Script" uid="uid://dn6fj7s21ojfo" path="res://Mobs/Koschey.gd" id="1_a1vr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fgak"]
 size = Vector2(8, 2)
@@ -922,17 +922,17 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qo11x"]
 _data = {
-"RESET": SubResource("Animation_8ipii"),
-"attack_down": SubResource("Animation_qm0v0"),
-"attack_left": SubResource("Animation_i5rge"),
-"attack_right": SubResource("Animation_y5yot"),
-"attack_up": SubResource("Animation_b27tq"),
-"disappearing": SubResource("Animation_k4vkf"),
-"idle": SubResource("Animation_e41hx"),
-"walk_down": SubResource("Animation_05fpe"),
-"walk_left": SubResource("Animation_xgg8r"),
-"walk_right": SubResource("Animation_pcfwi"),
-"walk_up": SubResource("Animation_t7l5s")
+&"RESET": SubResource("Animation_8ipii"),
+&"attack_down": SubResource("Animation_qm0v0"),
+&"attack_left": SubResource("Animation_i5rge"),
+&"attack_right": SubResource("Animation_y5yot"),
+&"attack_up": SubResource("Animation_b27tq"),
+&"disappearing": SubResource("Animation_k4vkf"),
+&"idle": SubResource("Animation_e41hx"),
+&"walk_down": SubResource("Animation_05fpe"),
+&"walk_left": SubResource("Animation_xgg8r"),
+&"walk_right": SubResource("Animation_pcfwi"),
+&"walk_up": SubResource("Animation_t7l5s")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7p20"]
@@ -944,52 +944,53 @@ radius = 383.033
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch1b5"]
 
-[node name="Koschey" type="CharacterBody2D" groups=["Boss"]]
+[node name="Koschey" type="CharacterBody2D" unique_id=1784781825 groups=["Boss"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_a1vr6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466190946]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_8fgak")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=841468064]
 position = Vector2(0, -14)
 texture = ExtResource("1_6xpat")
 hframes = 9
 vframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_qo11x")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956115962]
+libraries/ = SubResource("AnimationLibrary_qo11x")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=391463865]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=104361060]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_d7p20")
 
-[node name="Detector" type="Area2D" parent="."]
+[node name="Detector" type="Area2D" parent="." unique_id=445420323]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=718795055]
 shape = SubResource("CircleShape2D_6bv1b")
 
-[node name="AreaAttack" type="Area2D" parent="."]
+[node name="AreaAttack" type="Area2D" parent="." unique_id=1635271922]
 position = Vector2(0, 13)
 scale = Vector2(1.5, 1.2)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack" unique_id=1861893699]
 position = Vector2(0, 4.66667)
 shape = SubResource("CapsuleShape2D_ch1b5")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1765502008]
+
+[node name="LineOfSight" type="RayCast2D" parent="." unique_id=1464673978]
+target_position = Vector2(385, 0)
 
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
